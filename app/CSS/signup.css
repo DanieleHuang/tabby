@@ -1,0 +1,72 @@
+#sign_up_button
+{
+  float: left;
+  background-color: white;
+  font-size: 24px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 25px;
+  margin-left: calc((100% - 200px) / 2);
+  color: #FDB813;
+}
+
+.fields
+{
+    margin-left: calc((100% - 1925px)/2);
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+
+}
+
+.fields_input[type="text"]
+{
+    margin-left: calc((100% - 325px)/2);
+    margin-bottom: 30px;
+    color: black;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    text-align: center;
+    outline-width: 0;
+
+}
+
+
+#main_body_sign_up
+{
+  width: 100%;
+  height: 1025px;
+  background-color: #FDB813;
+  margin-top: 150px;
+  float: left;
+
+}
+
+#log_in_button
+{
+  float: left;
+  background-color: #FDB813;
+  font-size: 24px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 25px;
+  margin-left: calc((100% - 175px) / 2);
+  color: white;
+}
+
+#yes_account
+{
+	font-size: 25px;
+	text-align: center;
+	padding-top: 25px;
+	float: left;
+	margin-left: calc((100% - 300px) / 2);
+}
+
+#log_in
+{
+	text-align: center;
+  margin-top: 100px;
+}
