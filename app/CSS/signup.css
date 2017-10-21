@@ -11,12 +11,10 @@
 
 .fields
 {
-    margin-left: calc((100% - 1925px)/2);
     color: white;
     font-size: 30px;
     font-weight: bolder;
     text-align: center;
-
 }
 
 .fields_input[type="text"]
