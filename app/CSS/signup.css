@@ -34,6 +34,21 @@
 
 }
 
+.fields_input[type="password"]
+{
+    margin-left: calc((100% - 325px)/2);
+    margin-bottom: 30px;
+    color: white;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    text-align: center;
+    outline-width: 0;
+
+}
+
 
 #main_body_sign_up
 {
