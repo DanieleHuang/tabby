@@ -4,6 +4,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
+    <script src="/js/authentication.js"/>
     <script>
       $(document).ready(function(){
         $("a").on('click', function(event) {
@@ -81,7 +82,7 @@
           <p class="fields">Password</p>
           <input id="password" type="text" class="fields_input"></input>
           <br></br>
-          <a href="/html/login.html">
+          <a onclick="login()">
             <div id="auth_button" class="fields">
               Log In
             </div>
