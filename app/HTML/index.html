@@ -5,27 +5,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
     <script>
-      $(document).ready(function(){
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-            $('html, body').animate({
-            scrollTop: $(hash).offset().top
-            }, 800, function(){
-            window.location.hash = hash;
-            });
-          }
-        });
-      });
+
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
-            $("#menu_bar").css("background-color", "#f1f1f1");
-            $("#menu_bar").css("opacity", "0.9");
+            $("#menu_bar").css("background-color", "white");
+            $("#menu_bar").css("opacity", "0.95");
+            $("#menu_bar").css("box-shadow", "5px 5px 5px grey");
             $("a").css("color", "#00395e");
+            $("#title_name").css("color", "#FDB813");
+            $(".heading").css("color", "#FDB813");
           } else {
-            $("#menu_bar").css("background-color", "transparent");
+            $("#menu_bar").css("background-color", "#FDB813");
+            $("#menu_bar").css("box-shadow", "none");
             $("a").css("color", "#FDB813");
+            $("#title_name").css("color", "white");
+            $(".heading").css("color", "white");
           }
       });
     </script>
@@ -34,7 +28,6 @@
   </head>
 
   <body>
-
     <div id = "menu_bar">
       <a href = "index.html">
         <p id ="title_name">
@@ -45,18 +38,24 @@
       </a>
 
       <li class="heading">
-        Login
+        <b>
+          Login
+        </b>
       </li>
 
       <a href = "/html/services.html">
         <li class="heading">
-          Services
+          <b>
+            Services
+          </b>
         </li>
       </a>
 
       <a href = "/html/dashboard.html">
         <li class="heading">
-          Dashboard
+          <b>
+            Dashboard
+          </b>
         </li>
       </a>
     </div>

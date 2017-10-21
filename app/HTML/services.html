@@ -2,6 +2,25 @@
 
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script>
+
+      $(window).scroll(function() {
+          if ($(document).scrollTop() > 0) {
+            $("#menu_bar").css("background-color", "white");
+            $("#menu_bar").css("opacity", "0.9");
+            $("a").css("color", "#00395e");
+            $("#title_name").css("color", "#FDB813");
+            $(".heading").css("color", "#FDB813");
+          } else {
+            $("#menu_bar").css("background-color", "#FDB813");
+            $("a").css("color", "#FDB813");
+            $("#title_name").css("color", "white");
+            $(".heading").css("color", "white");
+          }
+      });
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
   </head>
