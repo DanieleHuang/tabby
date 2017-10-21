@@ -9,20 +9,17 @@ function login() {
 	console.log(email);
 	console.log(password);
 
-  var success = true;
-
-	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-	// Handle Errors here.
+	firebase.auth().signInWithEmailAndPassword(email, password).then(
+    function() {
+      window.location.replace('/dashboard');
+    },
+    function(error) {
+	  // Handle Errors here.
   	var errorCode = error.code;
   	var errorMessage = error.message;
   	alert(errorMessage);
     console.log(error);
-    success = false;
 	});
-
-  if (success) {
-    window.location.replace('/dashboard');
-  }
 };
 
 function emailToURL(email) {
@@ -40,32 +37,27 @@ function register() {
     return;
   }
 
-  var success = true;
-
 	firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch(function(error) {
-  	success = false;
-  	// Handle Errors here.
-  	var errorCode = error.code;
-  	var errorMessage = error.message;
-  	if (errorCode == 'auth/weak-password') {
-   		alert('The password is too weak.');
-  	} else {
-    	alert(errorMessage);
-  	}
-  	console.log(error);
-	});
-
-  login();
-
-  if(success) {
-    var userRef = firebase.database().ref("users/" + emailToURL(email));
-    userRef.set({
-      "name": name,
-      "eventList": [],
-      "pendingOwnerships": [],
-      "debts": []
-    });
-  }
+    .then(function() {
+      login();
+      var userRef = firebase.database().ref("users/" + emailToURL(email));
+      userRef.set({
+        "name": name,
+        "eventList": [],
+        "pendingOwnerships": [],
+        "debts": []
+      });
+    },
+    function(error) {
+    	// Handle Errors here.
+    	var errorCode = error.code;
+    	var errorMessage = error.message;
+    	if (errorCode == 'auth/weak-password') {
+     		alert('The password is too weak.');
+    	} else {
+      	alert(errorMessage);
+    	}
+    	console.log(error);
+  	});
 }
 
