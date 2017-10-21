@@ -56,9 +56,8 @@ function register() {
   	console.log(error);
 	});
 
-  login();
-
   if(success) {
+    login();
     var userRef = firebase.database().ref("users/" + emailToURL(email));
     userRef.set({
       "name": name,
