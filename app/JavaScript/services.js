@@ -31,6 +31,12 @@ function open_modal(type, deepColor, backgroundColor)
       content[i].style.backgroundColor = deepColor;
     }
 
+    var modal_users = document.getElementsByClassName("modal-content-users");
+    for (var i = 0; i < modal_users.length; i++)
+    {
+      modal_users[i].style.display = "block";
+    }
+
     for (var i = 0; i < content_none.length; i++)
     {
       content_none[i].style.display = "block";
@@ -60,7 +66,16 @@ function open_modal(type, deepColor, backgroundColor)
 
 function populate_modal(type)
 {
+  var modal_payment = document.getElementById("modal_payment");
+
   var dropdown_parent = document.getElementById("dropdown_parent");
+
+  while (dropdown_parent.childNodes.length > 1)
+  {
+    dropdown_parent.removeChild(dropdown_parent.lastChild);
+  }
+
+  reset_modal_payments();
 
   switch(type)
   {
@@ -70,7 +85,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = spotify_payment[i];
+        let val = spotify_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'Amazon':
@@ -79,7 +106,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = amazon_payment[i];
+        let val = amazon_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'Netflix':
@@ -88,7 +127,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = netflix_payment[i];
+        let val = netflix_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'Hulu':
@@ -97,7 +148,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = hulu_payment[i];
+        let val = hulu_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'HBO':
@@ -106,7 +169,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = hbo_payment[i];
+        let val = hbo_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'NFL Game Pass':
@@ -115,7 +190,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = nfl_payment[i];
+        let val = nfl_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'NBA League Pass':
@@ -124,7 +211,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = nba_payment[i];
+        let val = nba_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'MLB TV':
@@ -133,7 +232,19 @@ function populate_modal(type)
         var link = document.createElement("DIV");
         link.className += " dropdown_div";
         link.innerHTML = mlb_payment[i];
+        let val = mlb_payment[i];
         dropdown_parent.appendChild(link);
+        link.onclick = function()
+        {
+          var dropdown = document.getElementById("dropdown");
+          modal_payment.innerHTML = val;
+          var dropdown_content = document.getElementsByClassName("dropdown-content");
+
+          for (var i = 0; i < dropdown_content.length; i++)
+          {
+            dropdown_content[i].style.display = "none";
+          }
+        }
       }
       break;
     case 'Custom':
@@ -143,9 +254,35 @@ function populate_modal(type)
   }
 }
 
+function reset_modal_payments()
+{
+  modal_payment.innerHTML = "Payment Plan";
+  var dropdown_content = document.getElementsByClassName("dropdown-content");
+  modal_payment.onclick = function()
+  {
+    for (var i = 0; i < dropdown_content.length; i++)
+    {
+      dropdown_content[i].style.display = "block";
+    }
+    document.onmouseout = function(event)
+    {
+      if (event.target != modal_payment)
+      {
+        for (var i = 0; i < dropdown_content.length; i++)
+        {
+          if (event.target == dropdown_content[i])
+          {
+            return;
+          }
+        }
+      }
+    }
+  }
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
+
   var modal = document.getElementById('myModal');
 
   if (event.target == modal) {

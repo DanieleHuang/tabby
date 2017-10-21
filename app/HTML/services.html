@@ -29,7 +29,7 @@
   <body>
 
     <div id = "menu_bar">
-      <a href = "/">
+      <a href = "index.html">
         <p id ="title_name">
           <b>
             tabby
@@ -43,7 +43,7 @@
         </b>
       </li>
 
-      <a href="/services">
+      <a href = "/html/services.html">
         <li class="heading">
           <b>
             Services
@@ -51,7 +51,7 @@
         </li>
       </a>
 
-      <a href="/dashboard">
+      <a href = "/html/dashboard.html">
         <li class="heading">
           <b>
             Dashboard
@@ -85,12 +85,17 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <center><b><p id="modal_title"></p></b></center>
-        <div class="dropdown">
+        <div id="dropdown">
           <center>
-            <div id="modal_payment" class="dropbtn modal-content-none" style="width: 80%;">Payment Plan</div>
+            <div id="modal_payment" class="dropbtn modal-content-none" style="width: 80%;cursor:pointer;">Payment Plan</div>
           </center>
           <div id="dropdown_parent" class="dropdown-content modal-content-dropdown">
           </div>
+        </div>
+
+        <input class="modal-content-users" id="modal_users" type="text" placeholder="Add Users">Test
+        </input>
+        <div class="modal-content-users" id="create_modal">
         </div>
       </div>
     </div>
