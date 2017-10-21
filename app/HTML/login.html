@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("a").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+            scrollTop: $(hash).offset().top
+            }, 800, function(){
+            window.location.hash = hash;
+            });
+          }
+        });
+      });
+      $(window).scroll(function() {
+          if ($(document).scrollTop() > 0) {
+            $("#menu_bar").css("background-color", "#f1f1f1");
+            $("#menu_bar").css("opacity", "0.9");
+            $("a").css("color", "#00395e");
+          } else {
+            $("#menu_bar").css("background-color", "transparent");
+            $("a").css("color", "#FDB813");
+          }
+      });
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/auth.css">
+  </head>
+
+  <body>
+
+    <div id = "menu_bar">
+
+      <a href = "index.html">
+        <p id ="title_name">
+          <b>
+            tabby
+          </b>
+        </p>
+      </a>
+
+      <li class="heading">
+        Login
+      </li>
+
+      <a href = "/html/services.html">
+        <li class="heading">
+          Services
+        </li>
+      </a>
+
+      <a href = "/html/dashboard.html">
+        <li class="heading">
+          Dashboard
+        </li>
+      </a>
+    </div>
+
+    <div class = "clearfix"/>
+
+    <div id="main_body_auth">
+      <div class="auth_form">
+        <p>Email:</p>
+        <input id="email" type="text"><br>
+        <p>Password:</p>
+        <input id="password" type="text">
+        <div id="auth_button">
+          Log In
+        </div>
+      </div>
+    </div>
+
+    <div id="sign_up">
+      <p id="no_account">Don't have an account?</p>
+      <div class="clearfix"/>
+      <br></br>
+      <div id="main_body_login_auth">
+        Sign Up
+      </div>
+    </div>
+
+    <div class = "clearfix"/>
+
+    <div id="footer">
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js">
+    </script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyB77XAZh9i8ok1VoAjHK2UsziuYE6M_9hQ",
+        authDomain: "tabby-hacks2017.firebaseapp.com",
+        databaseURL: "https://tabby-hacks2017.firebaseio.com",
+        projectId: "tabby-hacks2017",
+        storageBucket: "tabby-hacks2017.appspot.com",
+        messagingSenderId: "1015964828530"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+</html>
