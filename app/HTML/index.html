@@ -2,6 +2,33 @@
 
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("a").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+            scrollTop: $(hash).offset().top
+            }, 800, function(){
+            window.location.hash = hash;
+            });
+          }
+        });
+      });
+      $(window).scroll(function() {
+          if ($(document).scrollTop() > 0) {
+            $("#menu_bar").css("background-color", "#f1f1f1");
+            $("#menu_bar").css("opacity", "0.9");
+            $("a").css("color", "#00395e");
+          } else {
+            $("#menu_bar").css("background-color", "transparent");
+            $("a").css("color", "#FDB813");
+          }
+      });
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
   </head>

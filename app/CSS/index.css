@@ -24,6 +24,7 @@ body
   background-color: #FDB813;
   width: 100%;
   height: 70px;
+  position: fixed;
 }
 
 #title_name
