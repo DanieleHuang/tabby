@@ -22,6 +22,7 @@ body
 {
   margin: 0;
   padding: 0;
+  min-width: 1400px;
 }
 
 #menu_bar
@@ -32,6 +33,8 @@ body
   position: fixed;
   float: left;
   transition: 0.5s;
+  min-width: 1400px;
+  z-index: 5;
 }
 
 #title_name
@@ -122,6 +125,13 @@ body
     margin-left: 10px;
     margin-top: 25px;
     text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer_images:hover
+{
+  opacity: 0.7;
 }
 
 #side_bar
@@ -163,6 +173,14 @@ body
   border-radius: 15px;
   margin-top: 50px;
   box-shadow: 5px 5px 5px grey;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.dashboard_cards:hover
+{
+  z-index: -1;
+  transform: scale(1.1);
 }
 
 .service_images
@@ -173,4 +191,68 @@ body
   height: 175px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.service_images:hover
+{
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+
+
+--------------
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+#modal_title
+{
+  font-size: 36px;
+  color: #FDB813;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    height: 500px;
+    float: left;
+    margin-left: calc((100% - 500px) / 2);
+    position: fixed;
+    display: none;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 7px solid #FDB813;
+    width: 500px; /* Could be more or less, depending on screen size */
+    z-index: 10;
+    border-radius: 5px;
+    overflow-y: scroll;
+    margin-top: -50px;
+}
+
+/* The Close Button */
+.close {
+  margin-top: -10px;
+  color: #FDB813;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  opacity: 0.9;
+    text-decoration: none;
+    cursor: pointer;
 }
