@@ -20,12 +20,18 @@
       });
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
-            $("#menu_bar").css("background-color", "#f1f1f1");
-            $("#menu_bar").css("opacity", "0.9");
+            $("#menu_bar").css("background-color", "white");
+            $("#menu_bar").css("opacity", "0.95");
+            $("#menu_bar").css("box-shadow", "5px 5px 5px grey");
             $("a").css("color", "#00395e");
+            $("#title_name").css("color", "#FDB813");
+            $(".heading").css("color", "#FDB813");
           } else {
-            $("#menu_bar").css("background-color", "transparent");
+            $("#menu_bar").css("background-color", "#FDB813");
+            $("#menu_bar").css("box-shadow", "none");
             $("a").css("color", "#FDB813");
+            $("#title_name").css("color", "white");
+            $(".heading").css("color", "white");
           }
       });
     </script>
@@ -46,9 +52,11 @@
         </p>
       </a>
 
-      <li class="heading">
-        Login
-      </li>
+      <a href = "/html/login.html">
+        <li class="heading">
+          Login
+        </li>
+      </a>
 
       <a href = "/html/services.html">
         <li class="heading">
@@ -66,22 +74,24 @@
     <div class = "clearfix"/>
 
     <div id="main_body_auth">
-      <div class="auth_form">
-        <p>Email:</p>
-        <input id="email" type="text"><br>
-        <p>Password:</p>
-        <input id="password" type="text">
-        <div id="auth_button">
-          Log In
-        </div>
+          <div class = "clearfix"/>
+
+          <p class="fields" style="margin-top: 50px;"">Email</p>
+          <input id="email" type="text" class="fields_input";"></input><br>
+          <p class="fields">Password</p>
+          <input id="password" type="text" class="fields_input"></input>
+          <br></br>
+          <div id="auth_button" class="fields">
+            Log In
+          </div>
       </div>
-    </div>
 
     <div id="sign_up">
-      <p id="no_account">Don't have an account?</p>
+      
       <div class="clearfix"/>
       <br></br>
-      <div id="main_body_login_auth">
+      <p id="no_account">Don't have an account?</p>
+      <div id="sign_up_button">
         Sign Up
       </div>
     </div>

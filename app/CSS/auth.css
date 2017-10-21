@@ -1,8 +1,39 @@
-#auth_form
+#auth_button
 {
-	padding-top: 50px;
-	margin-left: calc((100% - 180px) /2);
+  float: left;
+  background-color: white;
+  font-size: 24px;
+  padding: 10px 50px 10px 50px;
+  border-radius: 25px;
+  margin-left: calc((100% - 175px) / 2);
+  color: #FDB813;
 }
+
+.fields
+{
+    margin-left: calc((100% - 1000px)/2);
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+
+}
+
+.fields_input[type="text"]
+{
+    margin-left: calc((100% - 325px)/2);
+    margin-bottom: 30px;
+    color: black;
+    font-size: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    text-align: center;
+    outline-width: 0;
+
+}
+
 
 #main_body_auth
 {
@@ -11,9 +42,10 @@
   background-color: #FDB813;
   margin-top: 100px;
   float: left;
+
 }
 
-#main_body_login_auth
+#sign_up_button
 {
   float: left;
   background-color: #FDB813;
@@ -36,4 +68,5 @@
 #sign_up
 {
 	text-align: center;
+  margin-top: 300px;
 }
