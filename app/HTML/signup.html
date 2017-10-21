@@ -4,21 +4,8 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
-    <script src="/js/authentication.js"/>
+    <script src="/js/authentication.js"></script>
     <script>
-      $(document).ready(function(){
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-            $('html, body').animate({
-            scrollTop: $(hash).offset().top
-            }, 800, function(){
-            window.location.hash = hash;
-            });
-          }
-        });
-      });
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
             $("#menu_bar").css("background-color", "white");
@@ -42,9 +29,7 @@
   </head>
 
   <body>
-
     <div id = "menu_bar">
-
       <a href = "/">
         <p id ="title_name">
           <b>
@@ -55,19 +40,25 @@
 
       <a href="/login">
         <li class="heading">
-          Login
+          <b>
+            Login
+          </b>
         </li>
       </a>
 
       <a href="/services">
         <li class="heading">
-          Services
+          <b>
+            Services
+          </b>
         </li>
       </a>
 
       <a href="/dashboard">
         <li class="heading">
-          Dashboard
+          <b>
+            Dashboard
+          </b>
         </li>
       </a>
     </div>
@@ -75,40 +66,59 @@
     <div class = "clearfix"/>
 
     <div id="main_body_sign_up">
-          <div class = "clearfix"/>
+          <div class = "clearfix"></div>
+
+          <div style="float: left; margin-left: 5%;">
           <p class="fields" style="margin-top: 65px;">First Name</p>
-          <input id="firstname" type="text" class="fields_input";"></input><br>
+          <input id="firstname" type="text" class="fields_input"></input><br>
           <p class="fields">Last Name</p>
-          <input id="lastname" type="text" class="fields_input";"></input><br>
+          <input id="lastname" type="text" class="fields_input"></input><br>
           <p class="fields">Email</p>
-          <input id="email" type="text" class="fields_input";"></input><br>
-          <p class="fields"> Password</p>
+
+          <input id="email" type="text" class="fields_input"></input><br>
+        </div>
+        <div style="float: right; margin-right: 5%;">
+          <p class="fields" style="margin-top: 65px;"> Password</p>
           <input id="password" type="password" class="fields_input"></input>
           <p class="fields"> Confirm Password</p>
           <input id="confirm_password" type="password" class="fields_input"></input>
           <br></br>
           <a onclick="register()">
-            <div id="sign_up_button" class="fields">
+            <div id="sign_up_button" class="fields hover_div" style="margin-top: 50px;">
               Sign Up
             </div>
           </a>
-      </div>
+        </div>
+      <div class="clearfix"></div>
+      <br></br>
+
+      <center>
+      <p id="yes_account">Already have an account?</p>
+    </center>
 
     <div id="log_in">
-      
-      <div class="clearfix"/>
-      <br></br>
-      <p id="yes_account">Already have an account?</p>
       <a href="/login">
-        <div id="log_in_button">
+        <div id="log_in_button" class="hover_div">
           Log In
         </div>
       </a>
     </div>
+  </div>
 
     <div class = "clearfix"/>
 
-    <div id="footer">
+    <div id="footer" style="margin-top: 150px;">
+      <a href="mailto:tgih1999@gmail.com">
+        <img src = "/Images/mail.png" class="footer_images" style="margin-left: calc((100% - 120px) / 2);">
+        </img>
+      </a>
+      <img src = "/Images/phone.png" class="footer_images">
+      </img>
+      <center>
+        <p id="footer_text">
+          Copyright 2017 &copy;
+        </p>
+      </center>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js">

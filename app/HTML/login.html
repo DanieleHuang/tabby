@@ -4,7 +4,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
-    <script src="/js/authentication.js"/>
+    <script src="/js/authentication.js"></script>
     <script>
       $(document).ready(function(){
         $("a").on('click', function(event) {
@@ -42,9 +42,7 @@
   </head>
 
   <body>
-
     <div id = "menu_bar">
-
       <a href = "/">
         <p id ="title_name">
           <b>
@@ -55,55 +53,72 @@
 
       <a href="/login">
         <li class="heading">
-          Login
+          <b>
+            Login
+          </b>
         </li>
       </a>
 
       <a href="/services">
         <li class="heading">
-          Services
+          <b>
+            Services
+          </b>
         </li>
       </a>
 
       <a href="/dashboard">
         <li class="heading">
-          Dashboard
+          <b>
+            Dashboard
+          </b>
         </li>
       </a>
     </div>
 
-    <div class = "clearfix"/>
+    <div class = "clearfix"></div>
 
     <div id="main_body_auth">
-          <div class = "clearfix"/>
 
-          <p class="fields" style="margin-top: 50px;"">Email</p>
-          <input id="email" type="text" class="fields_input";"></input><br>
+          <p class="fields" style="margin-top: 50px;">Email</p>
+          <input id="email" type="text" class="fields_input"></input><br>
           <p class="fields">Password</p>
           <input id="password" type="password" class="fields_input"></input>
           <br></br>
           <a onclick="login()">
-            <div id="auth_button" class="fields">
+            <div id="auth_button" class="fields hover_div">
               Log In
             </div>
           </a>
-      </div>
 
     <div id="sign_up">
-      
-      <div class="clearfix"/>
+
+      <div class="clearfix"></div>
       <br></br>
       <p id="no_account">Don't have an account?</p>
-      <a href="/signup">
-        <div id="sign_up_button">
+      <br></br>
+      <a href="/signup" >
+        <div id="sign_up_button" class="hover_div">
           Sign Up
         </div>
       </a>
+      <br></br>
     </div>
+   </div>
+   <div class="clearfix"></div>
 
-    <div class = "clearfix"/>
-
-    <div id="footer">
+    <div id="footer" style="margin-top: 175px;">
+      <a href="mailto:tgih1999@gmail.com">
+        <img src = "/Images/mail.png" class="footer_images" style="margin-left: calc((100% - 120px) / 2);">
+        </img>
+      </a>
+      <img src = "/Images/phone.png" class="footer_images">
+      </img>
+      <center>
+        <p id="footer_text">
+          Copyright 2017 &copy;
+        </p>
+      </center>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js">

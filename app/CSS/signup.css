@@ -2,27 +2,30 @@
 {
   float: left;
   background-color: white;
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px 50px 10px 50px;
   border-radius: 25px;
-  margin-left: calc((100% - 200px) / 2);
+  margin-left: calc((100% - 170px) / 2);
   color: #FDB813;
+  cursor:pointer;
 }
 
 .fields
 {
     color: white;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: bolder;
     text-align: center;
+
 }
 
 .fields_input[type="text"]
 {
-    margin-left: calc((100% - 325px)/2);
+    margin-left: calc((100% - 400px)/2);
+    width: 400px;
     margin-bottom: 30px;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid white;
@@ -34,10 +37,11 @@
 
 .fields_input[type="password"]
 {
-    margin-left: calc((100% - 325px)/2);
+    margin-left: calc((100% - 400px)/2);
     margin-bottom: 30px;
+    width: 400px;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid white;
@@ -47,39 +51,40 @@
 
 }
 
-
 #main_body_sign_up
 {
-  width: 100%;
-  height: 1025px;
+  width: 1000px;
+  height: 525px;
   background-color: #FDB813;
   margin-top: 150px;
   float: left;
-
+  margin-left: calc((100% - 1000px)/2);
+  border-radius: 25px;
 }
 
 #log_in_button
 {
   float: left;
   background-color: #FDB813;
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px 50px 10px 50px;
   border-radius: 25px;
-  margin-left: calc((100% - 175px) / 2);
+  margin-left: calc((100% - 170px) / 2);
   color: white;
+  margin-top: -25px;
 }
 
 #yes_account
 {
-	font-size: 25px;
+	font-size: 18px;
 	text-align: center;
-	padding-top: 25px;
-	float: left;
-	margin-left: calc((100% - 300px) / 2);
+  margin-top: 25px;
 }
 
 #log_in
 {
+  float: left;
+  width: 100%;
 	text-align: center;
-  margin-top: 100px;
+  margin-top: 40px;
 }
