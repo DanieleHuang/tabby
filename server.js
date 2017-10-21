@@ -6,6 +6,8 @@ var path = __dirname + '/app/HTML/';
 
 // Static Links
 app.use('/css', express.static(__dirname + '/app/CSS/'));
+app.use('/html', express.static(__dirname + '/app/HTML/'));
+
 
 router.get("/", function(req, res) {
 	res.sendFile(path + 'index.html');
