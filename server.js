@@ -1,6 +1,19 @@
 var express = require("express");
+var firebase = require("firebase");
+var config = {
+  apiKey: "AIzaSyB77XAZh9i8ok1VoAjHK2UsziuYE6M_9hQ",
+  authDomain: "tabby-hacks2017.firebaseapp.com",
+  databaseURL: "https://tabby-hacks2017.firebaseio.com",
+  projectId: "tabby-hacks2017",
+  storageBucket: "tabby-hacks2017.appspot.com",
+  messagingSenderId: "1015964828530"
+};
+
+firebase.initializeApp(config);
+
 var app = express();
 var router = express.Router();
+
 var path = __dirname + '/app/HTML/';
 
 
