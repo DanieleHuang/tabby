@@ -4,6 +4,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
+    <script src="/js/authentication.js"/>
     <script>
       $(document).ready(function(){
         $("a").on('click', function(event) {
@@ -37,14 +38,14 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/css/auth.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
   </head>
 
   <body>
 
     <div id = "menu_bar">
 
-      <a href = "index.html">
+      <a href = "/">
         <p id ="title_name">
           <b>
             tabby
@@ -52,19 +53,19 @@
         </p>
       </a>
 
-      <a href = "/html/login.html">
+      <a href="/login">
         <li class="heading">
           Login
         </li>
       </a>
 
-      <a href = "/html/services.html">
+      <a href="/services">
         <li class="heading">
           Services
         </li>
       </a>
 
-      <a href = "/html/dashboard.html">
+      <a href="/dashboard">
         <li class="heading">
           Dashboard
         </li>
@@ -73,29 +74,36 @@
 
     <div class = "clearfix"/>
 
-    <div id="main_body_auth">
+    <div id="main_body_sign_up">
           <div class = "clearfix"/>
-
-          <p class="fields" style="margin-top: 50px;"">Email</p>
+          <p class="fields" style="margin-top: 65px;">First Name</p>
+          <input id="firstname" type="text" class="fields_input";"></input><br>
+          <p class="fields">Last Name</p>
+          <input id="lastname" type="text" class="fields_input";"></input><br>
+          <p class="fields">Email</p>
           <input id="email" type="text" class="fields_input";"></input><br>
-          <p class="fields"> New Password</p>
+          <p class="fields"> Password</p>
           <input id="password" type="text" class="fields_input"></input>
+          <p class="fields"> Confirm Password</p>
+          <input id="confirm_password" type="text" class="fields_input"></input>
           <br></br>
-          <a href="/html/login.html">
-            <div id="auth_button" class="fields">
-              Log In
+          <a onclick="register()">
+            <div id="sign_up_button" class="fields">
+              Sign Up
             </div>
           </a>
       </div>
 
-    <div id="sign_up">
+    <div id="log_in">
       
       <div class="clearfix"/>
       <br></br>
-      <p id="no_account">Don't have an account?</p>
-      <div id="sign_up_button">
-        Sign Up
-      </div>
+      <p id="yes_account">Already have an account?</p>
+      <a href="/login">
+        <div id="log_in_button">
+          Log In
+        </div>
+      </a>
     </div>
 
     <div class = "clearfix"/>

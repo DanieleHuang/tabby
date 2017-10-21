@@ -4,6 +4,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
+    <script src="/js/authentication.js"/>
     <script>
       $(document).ready(function(){
         $("a").on('click', function(event) {
@@ -44,7 +45,7 @@
 
     <div id = "menu_bar">
 
-      <a href = "index.html">
+      <a href = "/">
         <p id ="title_name">
           <b>
             tabby
@@ -52,19 +53,19 @@
         </p>
       </a>
 
-      <a href = "/html/login.html">
+      <a href="/login">
         <li class="heading">
           Login
         </li>
       </a>
 
-      <a href = "/html/services.html">
+      <a href="/services">
         <li class="heading">
           Services
         </li>
       </a>
 
-      <a href = "/html/dashboard.html">
+      <a href="/dashboard">
         <li class="heading">
           Dashboard
         </li>
@@ -81,7 +82,7 @@
           <p class="fields">Password</p>
           <input id="password" type="text" class="fields_input"></input>
           <br></br>
-          <a href="/html/login.html">
+          <a onclick="login()">
             <div id="auth_button" class="fields">
               Log In
             </div>
@@ -93,7 +94,7 @@
       <div class="clearfix"/>
       <br></br>
       <p id="no_account">Don't have an account?</p>
-      <a href="/html/signup.html">
+      <a href="/signup">
         <div id="sign_up_button">
           Sign Up
         </div>

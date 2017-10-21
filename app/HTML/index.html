@@ -4,6 +4,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
+    <script type="text/javascript" src="/js/page_flow.js"></script>
     <script>
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
@@ -28,7 +29,7 @@
 
   <body>
     <div id = "menu_bar">
-      <a href = "index.html">
+      <a href = "/">
         <p id ="title_name">
           <b>
             tabby
@@ -36,7 +37,7 @@
         </p>
       </a>
 
-      <a href = "/html/login.html">
+      <a href="/login">
         <li class="heading">
           <b>
             Login
@@ -44,7 +45,7 @@
         </li>
       </a>
 
-      <a href = "/html/services.html">
+      <a href="/services">
         <li class="heading">
           <b>
             Services
@@ -52,7 +53,7 @@
         </li>
       </a>
 
-      <a href = "/html/dashboard.html">
+      <a href="/dashboard">
         <li class="heading">
           <b>
             Dashboard
@@ -93,9 +94,11 @@
 
     </div>
 
-    <div id="main_body_login">
-      Sign Up
-    </div>
+    <a href="/signup">
+      <div id="main_body_login">
+        Sign Up
+      </div>
+    </a>
     <div class = "clearfix"/>
 
     <div id="footer">

@@ -29,7 +29,19 @@ router.get("/", function(req, res) {
 
 router.get("/dashboard", function(req, res) {
 	res.sendFile(path + 'dashboard.html');
-})
+});
+
+router.get("/login", function(req, res) {
+	res.sendFile(path + 'login.html');
+});
+
+router.get("/services", function(req, res) {
+	res.sendFile(path + 'services.html');
+});
+
+router.get("/signup", function(req, res) {
+	res.sendFile(path + 'signup.html');
+});
 
 app.use("/", router);
 
