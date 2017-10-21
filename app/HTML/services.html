@@ -5,16 +5,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
     </script>
     <script>
-
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
             $("#menu_bar").css("background-color", "white");
-            $("#menu_bar").css("opacity", "0.9");
+            $("#menu_bar").css("opacity", "0.95");
+            $("#menu_bar").css("box-shadow", "5px 5px 5px grey");
             $("a").css("color", "#00395e");
             $("#title_name").css("color", "#FDB813");
             $(".heading").css("color", "#FDB813");
           } else {
             $("#menu_bar").css("background-color", "#FDB813");
+            $("#menu_bar").css("box-shadow", "none");
             $("a").css("color", "#FDB813");
             $("#title_name").css("color", "white");
             $(".heading").css("color", "white");
