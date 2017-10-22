@@ -7,6 +7,7 @@
   border-radius: 25px;
   margin-left: calc((100% - 170px) / 2);
   color: #FDB813;
+  margin-top: 25px;
   cursor:pointer;
 }
 
@@ -21,8 +22,7 @@
 
 .fields_input[type="text"]
 {
-    margin-left: calc((100% - 400px)/2);
-    width: 400px;
+    width: 300px;
     margin-bottom: 30px;
     color: white;
     font-size: 26px;
@@ -32,14 +32,12 @@
     background: transparent;
     text-align: center;
     outline-width: 0;
-
 }
 
 .fields_input[type="password"]
 {
-    margin-left: calc((100% - 400px)/2);
     margin-bottom: 30px;
-    width: 400px;
+    width: 300px;
     color: white;
     font-size: 26px;
     box-sizing: border-box;
@@ -54,7 +52,7 @@
 #main_body_sign_up
 {
   width: 1000px;
-  height: 525px;
+  height: 550px;
   background-color: #FDB813;
   margin-top: 150px;
   float: left;
@@ -71,7 +69,7 @@
   border-radius: 25px;
   margin-left: calc((100% - 170px) / 2);
   color: white;
-  margin-top: -25px;
+  margin-top: -10px;
 }
 
 #yes_account
