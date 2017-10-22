@@ -1,6 +1,6 @@
 function updateDashCards(eventList) {
   var cardContainer = document.getElementById("dash_card_container");
-  
+
   if(eventList == null) {
     return;
   }
@@ -161,9 +161,9 @@ function setup_dashboard()
     var direct_arrow = document.createElement("IMG");
     direct_arrow.src = "/Images/direct_arrow.png";
     direct_arrow.style.float = "right";
-    direct_arrow.style.width = "100px";
+    direct_arrow.style.width = "95px";
     direct_arrow.style.height = "150px";
-    direct_arrow.style.marginRight = "12%";
+    direct_arrow.style.marginRight = "15%";
     direct_arrow.style.marginTop = "-85px";
     cardContainer.appendChild(servicesText);
     cardContainer.appendChild(direct_arrow);

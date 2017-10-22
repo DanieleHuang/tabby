@@ -71,7 +71,7 @@
     <div onclick="to_signout()" id = "signout_dropdown">
       Sign Out
     </div>
-
+<!--
     <div id="side_bar">
       <img src = "/Images/notification.png" class="side_bar_images">
       </img>
@@ -80,7 +80,7 @@
       <img src = "/Images/summary.png" class="side_bar_images">
       </img>
     </div>
-
+-->
     <div class = "clearfix"/>
 
     <div class="page_name">
@@ -94,7 +94,7 @@
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
-      <div class="modal-content" style="margin-top: 30px;">
+      <div id="tag_parent" class="modal-content" style="margin-top: 30px;">
         <span class="close">&times;</span>
         <center><b><p id="modal_title"></p></b></center>
         <div id="dropdown">
@@ -105,7 +105,7 @@
           </div>
         </div>
 
-        <input class="modal-content-users" id="modal_users" type="text" placeholder="Add Users (Separate multiple users with commas)">
+        <input class="modal-content-users" id="modal_users" type="text" placeholder="Add Users (Separate multiple emails with commas)">
         </input>
           <div onclick="create_tab()" class="modal-content-users" id="create_modal">
               <p style="margin-top: 10px; color: white">Tabb Me!</p>

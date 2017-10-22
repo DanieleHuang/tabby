@@ -1,6 +1,6 @@
 /* File Name: services.js
  */
- var spotify_payment = ["Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
+ var spotify_payment = ["Spotify Premium Student Monthly - $4.99", "Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
 var amazon_payment = ["Amazon Prime Monthly Video Membership - $8.99", "Amazon Prime Monthly - $10.99", "Amazon Prime Yearly - $99"];
 var netflix_payment = ["Netflix Basic Monthly - $7.99", "Netflix Standard Monthly - $10.99", "Netflix Premium Monthly - $13.99"];
 var hulu_payment = ["Hulu 1st Year Monthly - $5.99", "Hulu Monthly - $7.99", "Hulu with Live TV Monthly - $39.99"];
@@ -318,6 +318,14 @@ function populate_modal(type)
       }
       break;
     case 'Custom':
+  /*    var tag = document.getElementById("tag_parent");
+      var dropdown = document.getElementById("dropdown");
+
+      var name_input = document.createElement("INPUT");
+      name_input.className += " modal-content-users";
+      tag.insertBefore(name_input, dropdown);
+      tag.removeChild(dropdown);
+*/
       break;
     default:
       break;
