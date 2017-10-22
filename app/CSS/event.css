@@ -13,26 +13,24 @@
 #modal_title
 {
   font-size: 36px;
-  color: #1c8adb;
-  margin-top: 0px;
+  color: white;
+  margin-top: 50px;
   margin-left: 10px;
 }
 
 /* Modal Content/Box */
 .create_tab_modal_content {
-    height: 400px;
+    height: 500px;
     float: left;
     margin-left: calc((100% - 600px) / 2);
     position: fixed;
     display: none;
-    background-color: #e5e7ea;
     padding: 20px;
-    border: 7px solid #e5e7ea;
     width: 600px; /* Could be more or less, depending on screen size */
     z-index: 10;
-    border-radius: 5px;
+    border-radius: 5px 5px 5px 5px;
     margin-top: -50px;
-    box-shadow: 2px 2px 2px 2px grey;
+    background-color: #1c8adb;
 }
 
 .right_th
@@ -43,7 +41,7 @@
 
 .info
 {
-    color: #1c8adb;
+  color: white;
     font-size: 22px;
     font-weight: bolder;
     float: left;
@@ -52,8 +50,8 @@
 
 /* The Close Button */
 .close {
-  margin-top: -10px;
-  color: #1c8adb;
+  margin-top: 35px;
+  color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;

@@ -9,6 +9,8 @@ function updateDashCards(eventList) {
   }
 
   for (newEvent in eventList) {
+    let scopedEvent = newEvent;
+
     var eventObj = eventList[newEvent];
     var newCard = document.createElement("DIV");
     newCard.className = "dashboard_card";
@@ -41,7 +43,6 @@ function updateDashCards(eventList) {
       newOwner.style.marginTop = "-15px";
       newOwner.style.fontSize = "24px";
       newOwner.innerHTML = "(Owner)";
-      let scopedEvent = newEvent;
       trash.onclick = () => {deleteEvent(scopedEvent)};
       trash.src = "/Images/delete.png";
       newCard.appendChild(newOwner);
@@ -52,13 +53,12 @@ function updateDashCards(eventList) {
       trash.style.marginTop = "0px";
       trash.style.marginRight = "10px";
     }
-
     newCard.onclick = function(event)
     {
       var trash_can = document.getElementById("trash_icon");
       if (event.target != trash_can )
       {
-        view_tab();
+        view_tab(scopedEvent);
       }
     }
   }
