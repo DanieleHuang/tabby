@@ -346,14 +346,56 @@ function emailToURL(email) {
 }
 
 function create_tab() {
+  var database = firebase.database();
+  var new_key = database.ref().child('events').push().key;
+  var updates = {};
+  
+  var members_map = {};
+  var invitee_map = {};
+  var debtors_map = {members_map, invitee_map};
+
+  var owner_id = emailToURL(firebase.auth().currentUser.email);
+  var owner = firebase.auth().currentUser.displayName;
+
   var payment = document.getElementById("modal_payment").innerHTML;
+  var event_name = payment.split(" ")[0];
+  var total_cost = parseFloat(payment.split(" - $")[1]);
+
   var mem_string = document.getElementById("modal_users").value;
+  
+  
   if(mem_string.length == 0) {
+
+    var new_event = {
+      eventName: event_name,
+      owner: owner,
+      ownerID: owner_id,
+      totalCost: total_cost,
+      debtors: debtors_map
+    }
+
+    updates['/events/' + new_key] = new_event;
+
+    var new_person_event = {
+      owner: owner,
+      ownerEmail: firebase.auth().currentUser.email,
+      eventName: event_name,
+      amountPaying: total_cost
+    };
+
+    var owner_key = '/users/' + emailToURL(firebase.auth().currentUser.email) +'/eventList/' + new_key;
+    updates[owner_key] = new_person_event;
+
+        console.log(updates);
+
+    database.ref().update(updates);
+
+    var modal = document.getElementById('myModal');
+    modal.style.display = "none";
+    
     return;
   }
 
-  var event_name = payment.split(" ")[0];
-  var total_cost = parseFloat(payment.split(" - $")[1]);
   var members = mem_string.split(",");
 
   var split_cost = total_cost/(members.length+1);
@@ -361,13 +403,7 @@ function create_tab() {
     return;
   }
 
-  var owner_id = emailToURL(firebase.auth().currentUser.email);
-  var owner = firebase.auth().currentUser.displayName;
-  var members_map = {};
-  var invitee_map = {};
-  var debtors_map = {members_map, invitee_map};
-
-  var database = firebase.database();
+  
 
   var users_ref = database.ref('users');
 
@@ -395,16 +431,13 @@ function create_tab() {
             debtors: debtors_map
           }
 
-          var new_key = database.ref().child('events').push().key;
-
-          var updates = {};
           updates['/events/' + new_key] = new_event;
 
           var new_person_event = {
             owner: owner,
             ownerEmail: firebase.auth().currentUser.email,
             eventName: event_name,
-            amountPaying: split_cost,
+            amountPaying: split_cost
           }
 
           for(person in members_map) {
