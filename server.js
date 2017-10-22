@@ -1,5 +1,6 @@
 var express = require("express");
 var firebase = require("firebase");
+
 var config = {
   apiKey: "AIzaSyB77XAZh9i8ok1VoAjHK2UsziuYE6M_9hQ",
   authDomain: "tabby-hacks2017.firebaseapp.com",

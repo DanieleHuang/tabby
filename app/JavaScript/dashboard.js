@@ -1,4 +1,5 @@
 // Initializes Dashboard.
+
 function Dashboard() {
   // Shortcuts to DOM Elements.
   this.userName = document.getElementById('user-name');
