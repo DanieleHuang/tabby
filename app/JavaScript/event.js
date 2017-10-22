@@ -1,16 +1,37 @@
 // Initializes Event.
 function Event() {
   // Shortcuts to DOM Elements.
-  this.eventName = document.getElementById('event-name');
+  this.eventNameElement = document.getElementById('event-name');
   this.eventId;
-  this.ownerName = document.getElementById('owner-name');
+  this.ownerNameElement = document.getElementById('owner-name');
   this.ownerId;
-  this.pendingOwnerIndicator = document.getElementById('pending-owner')
-  this.pendingOwnerId;
-  this.totalCost = document.getElementById('total-cost');
-  this.splitOption = document.getElementById('split-option');
-  this.debtorList = document.getElementById('debtor-list');
+  //this.pendingOwnerIndicatorElement = document.getElementById('pending-owner')
+  //this.pendingOwnerId;
+  this.totalCostElement = document.getElementById('total-cost');
+  //this.splitOptionElement = document.getElementById('split-option');
+  this.debtorListElement = document.getElementById('debtor-list');
+  this.debtorList;
   this.initFirebase();
+}
+
+Event.prototype.addDebtor = function(person, val) { 
+  if (this.debtorList == null) {
+    this.debtorList = {person:val};
+  } else {
+    this.debtorList[person] = val;
+  }
+  var updates = {};
+  updates[this.eventRef.child('debtors')] = debtorList;
+
+  firebase.database().ref().update(updates);
+}
+
+Event.prototype.removeDebtor = function(person) { 
+  delete this.debtorList[person];
+  var updates = {};
+  updates[this.eventRef.child('debtors')] = debtorList;
+
+  firebase.database().ref().update(updates);
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
@@ -18,16 +39,18 @@ Event.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
-  this.storage = firebase.storage();
+
+  this.attachDataListener();
+
   // Initiates Firebase auth and listen to auth state changes.
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
-Event.prototype.updateData = function(eventName, eventId, ownerName, ownerId, 
+Event.prototype.updatePageData = function(eventName, eventId, ownerName, ownerId, 
                                       pendingOwnerId, totalCost, splitOption, debtorList) {
-	this.eventName.value = eventName;
+	this.eventNameElement.value = eventName;
   this.eventId = eventId;
-  this.ownerName.value = ownerName;
+  this.ownerNameElement.value = ownerName;
   this.ownerId = ownerId;
   this.pendingOwnerId = pendingOwnerId;
   if (pendingOwnerId) {
@@ -35,10 +58,17 @@ Event.prototype.updateData = function(eventName, eventId, ownerName, ownerId,
   } else{
     this.pendingOwnerIndicator.setAttribute('hidden', 'true');
   }
-  this.totalCost.value = totalCost;
+  this.totalCostElement.value = totalCost;
   this.splitOption = splitOption;
-
-  //TODO: debtorList
+  this.debtorList = debtorList;
+  while(this.debtorListElement.childNodes.length > 0) {
+    this.debtorListElement.removeChild(debtorListElement.lastChild);
+  }
+  for (x in debtorList) {
+    var newDiv = document.createElement("DIV"); //TODO
+    newDiv.innerHTML = x + " " + debtorList[x];
+    debtorListElement.appendChild(newDiv);
+  }
 }
 
 // Loads user data.
@@ -51,7 +81,7 @@ Event.prototype.attachDataListener = function() {
   this.eventRef.off();
   this.eventRef.on('value', 
   	function(snapshot) {
-  		this.updateData(snapshot.child("eventName").val(),
+  		this.updatePageData(snapshot.child("eventName").val(),
         snapshot.child(eventId).val(),
         snapshot.child("owner").val(),
         snapshot.child("ownerId").val(),
@@ -99,5 +129,5 @@ Event.prototype.checkSignedInWithMessage = function() {
 };
 
 window.onload = function() {
-  window.dashboard = new Dashboard();
+  window.dashboard = new Event();
 };
