@@ -372,7 +372,16 @@ function create_tab() {
 
   var mem_string = document.getElementById("modal_users").value;
 
-  if(mem_string.length == 0) {
+  var members = mem_string.split(",");
+
+  var currUserEmail = firebase.auth().currentUser.email;
+  while(members.indexOf(currUserEmail) != -1) {
+    members.splice(members.indexOf(currUserEmail));
+  }
+  console.log(members);
+  console.log(mem_string);
+
+  if(mem_string.length == 0 || members.length == 0) {
 
     var new_event = {
       eventName: event_name,
@@ -385,7 +394,7 @@ function create_tab() {
     updates['/events/' + new_key] = new_event;
 
     var new_person_event = {
-      membersAmount: members_map.length + invitee_map.length + 1,
+      membersAmount: Object.keys(members_map).length + Object.keys(invitee_map).length + 1,
       owner: owner,
       ownerEmail: firebase.auth().currentUser.email,
       eventName: event_name,
@@ -401,13 +410,6 @@ function create_tab() {
     modal.style.display = "none";
 
     return;
-  }
-
-  var members = mem_string.split(",");
-
-  var currUserEmail = firebase.auth().currentUser.email;
-  while(members.indexOf(currUserEmail) != -1) {
-    members.splice(members.indexOf(currUserEmail));
   }
 
   var split_cost = total_cost/(members.length+1);
