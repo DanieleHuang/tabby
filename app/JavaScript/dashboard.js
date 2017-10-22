@@ -32,9 +32,10 @@ function setup_dashboard()
         signout_dropdown.style.display = "block";
         signout_dropdown.style.cursor = "pointer";
         signout_dropdown.className += " hover_div";
+        arrow.src = "/Images/up_arrow.png";
         signout_heading.onclick = function()
         {
-          signout_dropdown_hide(signout_heading, signout_dropdown);
+          signout_dropdown_hide(signout_heading, signout_dropdown, arrow);
         }
         signout_dropdown.onclick = function()
         {
@@ -43,13 +44,11 @@ function setup_dashboard()
             signout_dropdown.style.display = "none";
           }, function(error) {
             console.error('Sign Out Error', error);
-          });
-        }
+          });        }
       }
     } else {
       signout_heading.innerHTML = "Login";
       signout_heading.style.cusor = "pointer";
-      console.log("here");
       signout_heading.onclick = function()
       {
         window.location = "/login";
@@ -58,15 +57,17 @@ function setup_dashboard()
   });
 }
 
-function signout_dropdown_hide(signout_heading, signout_dropdown)
+function signout_dropdown_hide(signout_heading, signout_dropdown, arrow)
 {
+  arrow.src = "/Images/drop_arrow.png";
   signout_dropdown.style.display = "none";
   signout_heading.onclick = function()
   {
+    arrow.src = "/Images/up_arrow.png";
     signout_dropdown.style.display = "block";
     signout_heading.onclick = function()
     {
-      signout_dropdown_hide(signout_heading, signout_dropdown);
+      signout_dropdown_hide(signout_heading, signout_dropdown, arrow);
     }
   }
 }

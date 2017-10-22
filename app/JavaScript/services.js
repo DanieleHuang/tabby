@@ -31,9 +31,10 @@ function setup_services()
         signout_dropdown.style.display = "block";
         signout_dropdown.style.cursor = "pointer";
         signout_dropdown.className += " hover_div";
+        arrow.src = "/Images/up_arrow.png";
         signout_heading.onclick = function()
         {
-          signout_dropdown_hide(signout_heading, signout_dropdown);
+          signout_dropdown_hide(signout_heading, signout_dropdown, arrow);
         }
         signout_dropdown.onclick = function()
         {
@@ -55,15 +56,17 @@ function setup_services()
   });
 }
 
-function signout_dropdown_hide(signout_heading, signout_dropdown)
+function signout_dropdown_hide(signout_heading, signout_dropdown, arrow)
 {
+  arrow.src = "/Images/drop_arrow.png";
   signout_dropdown.style.display = "none";
   signout_heading.onclick = function()
   {
+    arrow.src = "/Images/up_arrow.png";
     signout_dropdown.style.display = "block";
     signout_heading.onclick = function()
     {
-      signout_dropdown_hide(signout_heading, signout_dropdown);
+      signout_dropdown_hide(signout_heading, signout_dropdown, arrow);
     }
   }
 }
