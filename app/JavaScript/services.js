@@ -363,7 +363,9 @@ function create_tab() {
 
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
-  var debtors_map = {};
+  var members_map = {};
+  var invitee_map = {};
+  var debtors_map = {members_map, invitee_map};
 
   var database = firebase.database();
 
@@ -377,11 +379,10 @@ function create_tab() {
     specific_ref.once("value")
       .then(function(snapshot) {
         if(!snapshot.exists()) {
-          alert(snapshot.key + " does not exist.");
-
+          alert(snapshot.key + " does not exist. An invite has been sent to them to join Tabby!");
+          invitee_map[snapshot.key] = split_cost;
         } else {
-          console.log(snapshot.key);
-          debtors_map[snapshot.key] = split_cost;
+          members_map[snapshot.key] = split_cost;
         }
         counter++;
 
@@ -406,7 +407,7 @@ function create_tab() {
             amountPaying: split_cost,
           }
 
-          for(person in debtors_map) {
+          for(person in members_map) {
             var new_person_key = '/users/' + person + '/eventList/' + new_key;
             updates[new_person_key] = new_person_event;
           }
