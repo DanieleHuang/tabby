@@ -164,6 +164,24 @@ function setup_dashboard()
       {
         window.location = "/login";
       }
+
+      var cardContainer = document.getElementById("dash_card_container");
+      var servicesText = document.createElement("P");
+      servicesText.innerHTML = "Don't have any Tabbs yet? Head over to the Services section to create some!";
+      servicesText.style.color = "white";
+      servicesText.style.fontSize = "28px";
+      servicesText.style.marginLeft = "10%";
+      servicesText.style.float = "left";
+
+      var direct_arrow = document.createElement("IMG");
+      direct_arrow.src = "/Images/direct_arrow.png";
+      direct_arrow.style.float = "right";
+      direct_arrow.style.width = "95px";
+      direct_arrow.style.height = "150px";
+      direct_arrow.style.marginRight = "15%";
+      direct_arrow.style.marginTop = "-85px";
+      cardContainer.appendChild(servicesText);
+      cardContainer.appendChild(direct_arrow);
     }
   });
 }
