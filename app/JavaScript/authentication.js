@@ -10,10 +10,8 @@ function login() {
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
 			window.location = "/dashboard";
-      //window.location.replace('/dashboard');
     },
     function(error) {
-	  // Handle Errors here.
   	var errorCode = error.code;
   	var errorMessage = error.message;
   	alert(errorMessage);
@@ -65,7 +63,7 @@ function register() {
           if(snapshot.exists() == false) {
             console.log("DNE");
             userRef.set({
-              name: fullname, 
+              name: fullname,
               phoneNumber: phoneNumber
             }).then(function() { login();});
           }

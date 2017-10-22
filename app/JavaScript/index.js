@@ -31,6 +31,7 @@
          {
            firebase.auth().signOut().then(function() {
              console.log('Signed Out');
+             window.location = "/";
              signout_dropdown.style.display = "none";
            }, function(error) {
              console.error('Sign Out Error', error);

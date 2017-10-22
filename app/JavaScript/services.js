@@ -40,6 +40,7 @@ function setup_services()
         {
           firebase.auth().signOut().then(function() {
             console.log('Signed Out');
+            window.location = "/";
             signout_dropdown.style.display = "none";
           }, function(error) {
             console.error('Sign Out Error', error);
@@ -349,7 +350,7 @@ function create_tab() {
   var database = firebase.database();
   var new_key = database.ref().child('events').push().key;
   var updates = {};
-  
+
   var members_map = {};
   var invitee_map = {};
   var debtors_map = {members_map, invitee_map};
@@ -362,8 +363,7 @@ function create_tab() {
   var total_cost = parseFloat(payment.split(" - $")[1]);
 
   var mem_string = document.getElementById("modal_users").value;
-  
-  
+
   if(mem_string.length == 0) {
 
     var new_event = {
@@ -377,6 +377,7 @@ function create_tab() {
     updates['/events/' + new_key] = new_event;
 
     var new_person_event = {
+      membersAmount: members_map.length + invitee_map.length + 1,
       owner: owner,
       ownerEmail: firebase.auth().currentUser.email,
       eventName: event_name,
@@ -392,7 +393,7 @@ function create_tab() {
 
     var modal = document.getElementById('myModal');
     modal.style.display = "none";
-    
+
     return;
   }
 
@@ -402,8 +403,6 @@ function create_tab() {
   if(isNaN(split_cost)) {
     return;
   }
-
-  
 
   var users_ref = database.ref('users');
 
@@ -434,6 +433,7 @@ function create_tab() {
           updates['/events/' + new_key] = new_event;
 
           var new_person_event = {
+            membersAmount: members.length + 1,
             owner: owner,
             ownerEmail: firebase.auth().currentUser.email,
             eventName: event_name,

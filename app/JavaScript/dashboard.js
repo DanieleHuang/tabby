@@ -17,24 +17,37 @@ function updateDashCards(eventList) {
     newCard.onclick = () => {view_tab()};
 
     var newParagraph = document.createElement("P");
-    newParagraph.innerHTML = eventObj.eventName;
-    if(eventObj.ownerEmail == firebase.auth().currentUser.email) {
-      newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "(Owner)"
+    newParagraph.style.color = "white";
+    newParagraph.style.fontSize = "28px";
 
-    }
-    newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "$"+ (eventObj.amountPaying.toFixed(2));
+    newParagraph.innerHTML = eventObj.eventName;
+
+    var newPrice = document.createElement("P");
+    newPrice.style.color = "white";
+    newPrice.style.fontSize = "30px";
+    newPrice.innerHTML = "You Pay: $"+ (eventObj.amountPaying.toFixed(2));
+    newPrice.style.marginTop = "-15px";
     newCard.style.textAlign = "center";
     newCard.appendChild(newParagraph);
+    newCard.appendChild(newPrice);
     cardContainer.appendChild(newCard);
     if(eventObj.ownerEmail == firebase.auth().currentUser.email)
     {
       var trash = document.createElement("IMG");
+      var newOwner = document.createElement("P");
+      newOwner.style.color = "white";
+      newOwner.style.float = "left";
+      newOwner.style.marginLeft = "130px";
+      newOwner.style.marginTop = "-15px";
+      newOwner.style.fontSize = "24px";
+      newOwner.innerHTML = "(Owner)";
       trash.src = "/Images/delete.png";
+      newCard.appendChild(newOwner);
       newCard.appendChild(trash);
       trash.style.width = "40px";
       trash.style.height = "40px";
       trash.style.float = "right";
-      trash.style.marginTop = "100px";
+      trash.style.marginTop = "0px";
       trash.style.marginRight = "10px";
     }
   }
@@ -96,6 +109,7 @@ function setup_dashboard()
         {
           firebase.auth().signOut().then(function() {
             console.log('Signed Out');
+            window.location = "/";
             signout_dropdown.style.display = "none";
           }, function(error) {
             console.error('Sign Out Error', error);
@@ -111,6 +125,27 @@ function setup_dashboard()
       }
     }
   });
+  var cardContainer = document.getElementById("dash_card_container");
+  if (cardContainer.childNodes.length == 1)
+  {
+    var servicesText = document.createElement("P");
+    servicesText.innerHTML = "Don't have any Tabbs yet? Head over to the Services section to create some!";
+    servicesText.style.color = "white";
+    servicesText.style.fontSize = "28px";
+    servicesText.style.marginLeft = "10%";
+    servicesText.style.float = "left";
+
+    var direct_arrow = document.createElement("IMG");
+    direct_arrow.src = "/Images/direct_arrow.png";
+    direct_arrow.style.float = "right";
+    direct_arrow.style.width = "100px";
+    direct_arrow.style.height = "150px";
+    direct_arrow.style.marginRight = "12%";
+    direct_arrow.style.marginTop = "-85px";
+    cardContainer.appendChild(servicesText);
+    cardContainer.appendChild(direct_arrow);
+
+  }
 }
 
 function signout_dropdown_hide(signout_heading, signout_dropdown, arrow)
