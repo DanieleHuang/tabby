@@ -1,11 +1,12 @@
 function updateDashCards(eventList) {
   var cardContainer = document.getElementById("dash_card_container");
-  while (cardContainer.childNodes.length > 0) {
-    cardContainer.removeChild(cardContainer.lastChild);
-  }
-
+  
   if(eventList == null) {
     return;
+  }
+
+  while (cardContainer.childNodes.length > 0) {
+    cardContainer.removeChild(cardContainer.lastChild);
   }
 
   for (newEvent in eventList) {
