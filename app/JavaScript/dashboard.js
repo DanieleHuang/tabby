@@ -38,7 +38,32 @@ function updateDashCards(eventList) {
       trash.style.marginRight = "10px";
     }
   }
+}
 
+function deleteEvent(eventId) {
+  var eventRef = firebase.database().ref("events/" + eventId);
+  var usersList = [];
+  eventRef.once('value').then(function(snapshot){
+    usersList.push(snapshot.ownerId);
+    var debtorList = snapshot.debtors.members_map;
+    if (debtorList != null) {
+      for(debtor in debtorsList) {
+        usersList.push(debtor);
+      }
+    }
+    debtorList = snapshot.debtors.invitee_map;
+    if (debtorList != null) {
+      for(debtor in debtorsList) {
+        usersList.push(debtor);
+      }
+    }
+
+    for(user in usersList) {
+      var eventListEventRef = firebase.database().ref("users/"+user+"/eventList"+eventId);
+      eventListEventRef.delete();
+    }
+    eventRef.delete();
+  });
 }
 
 function setup_dashboard()
