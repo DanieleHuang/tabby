@@ -379,11 +379,10 @@ function create_tab() {
     specific_ref.once("value")
       .then(function(snapshot) {
         if(!snapshot.exists()) {
-          alert(snapshot.key + " does not exist.");
-          debtors_map[1][emailToURL(members[i].trim())] = split_cost;
+          alert(snapshot.key + " does not exist. An invite has been sent to them to join Tabby!");
+          invitee_map[snapshot.key] = split_cost;
         } else {
-          console.log(snapshot.key);
-          debtors_map[0][snapshot.key] = split_cost;
+          members_map[snapshot.key] = split_cost;
         }
         counter++;
 
@@ -408,7 +407,7 @@ function create_tab() {
             amountPaying: split_cost,
           }
 
-          for(person in debtors_map[0]) {
+          for(person in members_map) {
             var new_person_key = '/users/' + person + '/eventList/' + new_key;
             updates[new_person_key] = new_person_event;
           }
