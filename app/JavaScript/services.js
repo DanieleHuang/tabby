@@ -280,6 +280,21 @@ function reset_modal_payments()
   }
 }
 
+
+function create_tab() {
+  var payment = document.getElementById("modal_payment");
+  var mem_string = document.getElementById("modal-content-users");
+  var members = mem_string.split(",");
+  var database = firebase.database();
+
+  var users_ref = database.ref('users');
+
+  for(int i=0; i<members.length; i++) {
+    
+  }
+
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
 
