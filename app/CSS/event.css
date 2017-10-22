@@ -6,13 +6,13 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    margin-top: 200px; 
+    margin-top: 200px;
     overflow: auto; /* Enable scroll if needed */
 }
 
 #modal_title
 {
-  font-size: 40px;
+  font-size: 36px;
   color: #1c8adb;
   margin-top: 0px;
   margin-left: 10px;
@@ -20,19 +20,25 @@
 
 /* Modal Content/Box */
 .create_tab_modal_content {
-    height: 500px;
+    height: 400px;
     float: left;
-    margin-left: calc((100% - 800px) / 2);
+    margin-left: calc((100% - 600px) / 2);
     position: fixed;
     display: none;
     background-color: #e5e7ea;
     padding: 20px;
     border: 7px solid #e5e7ea;
-    width: 800px; /* Could be more or less, depending on screen size */
+    width: 600px; /* Could be more or less, depending on screen size */
     z-index: 10;
     border-radius: 5px;
     margin-top: -50px;
     box-shadow: 2px 2px 2px 2px grey;
+}
+
+.right_th
+{
+  margin-left: 100px;
+  float: right;
 }
 
 .info
@@ -40,9 +46,8 @@
     color: #1c8adb;
     font-size: 22px;
     font-weight: bolder;
+    float: left;
     text-align: left;
-    padding-left: 200px;
-
 }
 
 /* The Close Button */
@@ -62,19 +67,12 @@
 }
 
 th {
-  width: 200px;
-  text-align: center;
+  margin-left: 25px;
+  float: left;
 }
 
-tr {
-  height: 10px;
-}
-
-.table_label {
-  font-weight: bolder;
-}
 
 .table_header {
-  font-size: 30px;
+  font-size: 22px;
   font-weight: bolder;
 }
