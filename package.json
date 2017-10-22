@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ejlin/tabby#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.16.2",
     "firebase": "^4.6.0",
     "twilio": "^3.9.0"
