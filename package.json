@@ -20,7 +20,8 @@
   "homepage": "https://github.com/ejlin/tabby#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "firebase": "^4.6.0"
+    "firebase": "^4.6.0",
+    "twilio": "^3.9.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
