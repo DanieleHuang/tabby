@@ -27,6 +27,10 @@ router.get("/", function(req, res) {
 	res.sendFile(path + 'index.html');
 });
 
+router.get("/faq", function(req, res) {
+	res.sendFile(path + 'faq.html');
+});
+
 router.get("/dashboard", function(req, res) {
 	res.sendFile(path + 'dashboard.html');
 });
