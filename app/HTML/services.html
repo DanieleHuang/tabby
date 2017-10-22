@@ -26,10 +26,10 @@
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
   </head>
 
-  <body>
+  <body onload="setup_services()">
 
     <div id = "menu_bar">
-      <a href = "index.html">
+      <a href = "/">
         <p id ="title_name">
           <b>
             tabby
@@ -38,7 +38,7 @@
       </a>
 
       <li class="heading">
-        <b>
+        <b id="signout_heading">
           Sign Out
         </b>
       </li>
@@ -58,6 +58,10 @@
           </b>
         </li>
       </a>
+    </div>
+
+    <div onclick="to_signout()" id = "signout_dropdown">
+      Sign Out
     </div>
 
     <div id="side_bar">
