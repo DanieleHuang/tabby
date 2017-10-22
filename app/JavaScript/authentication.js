@@ -22,12 +22,12 @@ function login() {
 };
 
 function emailToURL(email) {
-  return email.replace(/\./g,'¤');
+  return email.replace(/\./g,'-');
 }
 
 function register() {
 	console.log("Attempt register");
-  let name = document.getElementById('firstname').value + " " + document.getElementById('lastname').value;
+  let fullname = document.getElementById('firstname').value + " " + document.getElementById('lastname').value;
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('confirm_password').value;
@@ -58,11 +58,8 @@ function register() {
           if(snapshot.exists() == false) {
             console.log("DNE");
             userRef.set({
-              "name": name
-            }).then(function() {
-							login();
-							window.location = "/services";
-						});
+              name: fullname
+            }).then(function() { login();});
           }
         }
       );
