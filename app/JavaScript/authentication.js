@@ -31,6 +31,14 @@ function register() {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('confirm_password').value;
+  let phoneNumber = document.getElementById('phone-number').value;
+  if (! /^[0-9]{11}$/.test(phoneNumber)) {
+    alert("Please input exactly 11 numbers!");
+    return;
+  }
+  else{
+  	phoneNumber = '+'+phoneNumber;
+  }
   if (password != confirmpassword) {
     alert("The passwords do not match!");
     return;
@@ -42,8 +50,7 @@ function register() {
 			var first_name = document.getElementById("firstname").value;
 			var last_name = document.getElementById("lastname").value;
 			user.updateProfile({
-  			displayName: first_name + " " + last_name,
-  			photoURL: "https://example.com/jane-q-user/profile.jpg"
+  			displayName: first_name + " " + last_name
 			}).then(function() {
   			// Update successful.
 			}).catch(function(error) {
@@ -58,7 +65,8 @@ function register() {
           if(snapshot.exists() == false) {
             console.log("DNE");
             userRef.set({
-              name: fullname
+              name: fullname, 
+              phoneNumber: phoneNumber
             }).then(function() { login();});
           }
         }
