@@ -30,7 +30,7 @@
        }
      } else {
        signout_heading.innerHTML = "Login";
-       signout_heading.style.cusor = "pointer";
+       signout_heading.style.cursor = "pointer";
        console.log("here");
        signout_heading.onclick = function()
        {

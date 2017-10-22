@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
   </head>
 
-  <body>
+  <body onload="setup_index()">
 
     <div id = "menu_bar">
 
@@ -39,7 +39,7 @@
       </a>
 
       <li class="heading">
-        <b>
+        <b id="signout_heading">
           Sign Out
         </b>
       </li>
@@ -59,7 +59,7 @@
           </b>
         </li>
       </a>
-      
+
       <a href="/faq">
         <li class="heading">
           <b>
@@ -67,6 +67,10 @@
           </b>
         </li>
       </a>
+    </div>
+
+    <div onclick="to_signout()" id = "signout_dropdown">
+      Sign Out
     </div>
 
     <div id="side_bar">
@@ -89,19 +93,19 @@
     <div class = "clearfix"/>
 
     </div>
-    
+
     <div class="faq_cards">
-    	<center><h2> "Why use Tabby?"</h2></center>	
+    	<center><h2> "Why use Tabby?"</h2></center>
     	<center><h3> Tabby helps you manage all the reoccurring payments that you have, neatly and effortlessly!</h3></center>
     </div>
     <div class="faq_cards">
       <center><h2> "Can I pay my friends through your website?"</h2></center>
       <center><h3> "Unfortunately not yet. But soon hopefully."</h3></center>
     </div>
-    
+
     <div class="faq_cards">
     	<center><h2> "Can we split non- reoccurring payments?"</h2></center>
-    	<center><h3> "Definitely, this is what makes Tabby unique!"</h3></center> 
+    	<center><h3> "Definitely, this is what makes Tabby unique!"</h3></center>
     </div>
     <div class="faq_cards">
     	<center><h2> "How do I give up on my ownership?"</h2></center>
@@ -144,5 +148,6 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script type="text/javascript" src="/js/index.js"></script>
   </body>
 </html>

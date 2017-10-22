@@ -99,16 +99,16 @@ body
   margin-top: -5px;
 }
 
-#main_body_login
+.main_body_login
 {
   float: left;
   background-color: #FDB813;
   margin-top: 75px;
   font-size: 24px;
-  padding: 10px 50px 10px 50px;
+  padding: 10px 70px 10px 70px;
   border-radius: 25px;
-  margin-left: calc((100% - 180px) / 2);
   color: white;
+  margin-left: 25px;
 }
 
 .main_body_images
@@ -212,30 +212,28 @@ body
   cursor: pointer;
 }
 
-h2 { 
+h2 {
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    display: block;
-    font-size: 27px;
-    margin-top: 14px;
-    margin-bottom: 0.67em;
-    margin-left: 10px;
-    margin-right: 10;
-    
-    font-weight: 550;
-    color: #888888;
+  display: block;
+  font-size: 27px;
+  margin-top: 14px;
+  margin-bottom: 0.67em;
+  margin-left: 10px;
+  margin-right: 10;
+  font-weight: 550;
+  color: #888888;
 }
 
 h3{
-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    display: block;
-    font-size: 25px;
-    margin-top: 14px;
-    margin-bottom: 0.67em;
-    margin-left: 10px;
-    margin-right: 10px;
-    
-    font-weight: 550;
-    color: #585858;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  display: block;
+  font-size: 25px;
+  margin-top: 14px;
+  margin-bottom: 0.67em;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 550;
+  color: #585858;
 }
 
 .faq_cards
