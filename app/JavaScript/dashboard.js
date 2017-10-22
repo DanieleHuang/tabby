@@ -12,7 +12,7 @@ function updateDashCards(eventList) {
     var eventObj = eventList[newEvent];
     var newCard = document.createElement("DIV");
     newCard.className = "dashboard_card";
-    newCard.onclick = () => {view_tab()};
+
 
     var newParagraph = document.createElement("P");
     newParagraph.style.color = "white";
@@ -29,10 +29,12 @@ function updateDashCards(eventList) {
     newCard.appendChild(newParagraph);
     newCard.appendChild(newPrice);
     cardContainer.appendChild(newCard);
+
     if(eventObj.ownerEmail == firebase.auth().currentUser.email)
     {
       var trash = document.createElement("IMG");
       var newOwner = document.createElement("P");
+      trash.id = "trash_icon";
       newOwner.style.color = "white";
       newOwner.style.float = "left";
       newOwner.style.marginLeft = "130px";
@@ -49,6 +51,15 @@ function updateDashCards(eventList) {
       trash.style.float = "right";
       trash.style.marginTop = "0px";
       trash.style.marginRight = "10px";
+    }
+
+    newCard.onclick = function(event)
+    {
+      var trash_can = document.getElementById("trash_icon");
+      if (event.target != trash_can )
+      {
+        view_tab();
+      }
     }
   }
 }

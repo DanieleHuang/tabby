@@ -1,4 +1,5 @@
 function view_tab() {
+
 	var modal = document.getElementById('create_tab_modal');
 	var modal_content = document.getElementsByClassName('create_tab_modal_content')[0];
 	var span = document.getElementsByClassName("close")[0];
