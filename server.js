@@ -3,6 +3,8 @@ var parser = require("body-parser");
 var firebase = require("firebase");
 var twilio = require("twilio");
 
+var urlencodedParser = parser.urlencoded({extended: true});
+
 var TWILIO_ACCOUNT_SID = "AC00d63ff8051c139cef7e5b3feb867e18";
 var TWILIO_AUTH_TOKEN = "d081abb612423253a05f8969729decb3";
 var TWILIO_PHONE_NUMBER = "+14158911352";
@@ -54,12 +56,11 @@ router.get("/signup", function(req, res) {
 	res.sendFile(path + 'signup.html');
 });
 
-app.post("/send_sms", function(req, res) {
+router.post("/send_sms", urlencodedParser, function(req, res) {
 	var client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-	console.log("sending");
 	client.messages.create({
 	    body: req.body.message,
-	    to: '+14156236558',  // Text this number
+	    to: req.body.phoneNumber,  // Text this number
 	    from: TWILIO_PHONE_NUMBER // From a valid Twilio number
 	})
 	.then((message) => console.log(message.sid));

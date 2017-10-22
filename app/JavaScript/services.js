@@ -372,7 +372,16 @@ function create_tab() {
 
   var mem_string = document.getElementById("modal_users").value;
 
-  if(mem_string.length == 0) {
+  var members = mem_string.split(",");
+
+  var currUserEmail = firebase.auth().currentUser.email;
+  while(members.indexOf(currUserEmail) != -1) {
+    members.splice(members.indexOf(currUserEmail));
+  }
+  console.log(members);
+  console.log(mem_string);
+
+  if(mem_string.length == 0 || members.length == 0) {
 
     var new_event = {
       eventName: event_name,
@@ -385,7 +394,7 @@ function create_tab() {
     updates['/events/' + new_key] = new_event;
 
     var new_person_event = {
-      membersAmount: members_map.length + invitee_map.length + 1,
+      membersAmount: Object.keys(members_map).length + Object.keys(invitee_map).length + 1,
       owner: owner,
       ownerEmail: firebase.auth().currentUser.email,
       eventName: event_name,
@@ -401,13 +410,6 @@ function create_tab() {
     modal.style.display = "none";
 
     return;
-  }
-
-  var members = mem_string.split(",");
-
-  var currUserEmail = firebase.auth().currentUser.email;
-  while(members.indexOf(currUserEmail) != -1) {
-    members.splice(members.indexOf(currUserEmail));
   }
 
   var split_cost = total_cost/(members.length+1);
@@ -428,32 +430,20 @@ function create_tab() {
           invitee_map[snapshot.key] = split_cost;
         } else {
           members_map[snapshot.key] = split_cost;
-          console.log("trying to text...");
-
-          $.ajax({url: "/send_sms",
-            type: "POST",
-            data: '{"phone_number": ' + snapshot.val().phoneNumber + ', "message": "You owe me money"}',
-            success: function(output) {
-              console.log(output);
-            },
-            error: function(err) {
-              console.log(err);
-            }
+           $.ajax({
+              url: '/send_sms',
+              method: 'POST',
+              dataType: 'json',
+              data: {
+                  phoneNumber: snapshot.val().phoneNumber,
+                  message: "You have a new monthly payment of $" + split_cost.toFixed(2) + " to " + owner + "."
+              }
+          }).done(function(data) {
+              // The JSON sent back from the server will contain a success message
+              console.log(data);
+          }).fail(function(error) {
+              console.log(JSON.stringify(error));
           });
-          //  $.ajax({
-          //     url: '/send_sms',
-          //     method: 'POST',
-          //     // dataType: 'json',
-          //     // data: {
-          //     //     phoneNumber: snapshot.val().phoneNumber,
-          //     //     message: "YOU OWE ME MONEY"
-          //     // }
-          // }).done(function(data) {
-          //     // The JSON sent back from the server will contain a success message
-          //     alert(data.message);
-          // }).fail(function(error) {
-          //     alert(JSON.stringify(error));
-          // });
         }
 
         counter++;
