@@ -16,15 +16,27 @@ function updateDashCards(eventList) {
     newCard.className = "dashboard_card";
     newCard.onclick = () => {view_tab()};
 
-    var newParagraph = document.createElement("P");    
+    var newParagraph = document.createElement("P");
     newParagraph.innerHTML = eventObj.eventName;
     if(eventObj.ownerEmail == firebase.auth().currentUser.email) {
       newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "(Owner)"
+
     }
     newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "$"+ (eventObj.amountPaying.toFixed(2));
     newCard.style.textAlign = "center";
     newCard.appendChild(newParagraph);
     cardContainer.appendChild(newCard);
+    if(eventObj.ownerEmail == firebase.auth().currentUser.email)
+    {
+      var trash = document.createElement("IMG");
+      trash.src = "/Images/delete.png";
+      newCard.appendChild(trash);
+      trash.style.width = "40px";
+      trash.style.height = "40px";
+      trash.style.float = "right";
+      trash.style.marginTop = "100px";
+      trash.style.marginRight = "10px";
+    }
   }
 
 }
