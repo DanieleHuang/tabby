@@ -212,6 +212,48 @@ body
   cursor: pointer;
 }
 
+h2 { 
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    display: block;
+    font-size: 27px;
+    margin-top: 14px;
+    margin-bottom: 0.67em;
+    margin-left: 10px;
+    margin-right: 10;
+    
+    font-weight: 550;
+    color: #888888;
+}
+
+h3{
+font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    display: block;
+    font-size: 25px;
+    margin-top: 14px;
+    margin-bottom: 0.67em;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    font-weight: 550;
+    color: #585858;
+}
+
+.faq_cards
+{
+  width: 350px;
+  height: 200px;
+  background-color: #FFFFFF;
+  float: left;
+  margin-left: calc((100% - 1050px) / 4);
+  border-radius: 15px;
+  margin-top: 50px;
+  border-style: solid;
+  border-color: #ffc04c #ffc04c;
+  box-shadow: 5px 5px 5px #ffdb99;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .dashboard_card:hover
 {
   z-index: -1;

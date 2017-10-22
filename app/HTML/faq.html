@@ -26,9 +26,10 @@
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
   </head>
 
-  <body onload="setup_services()">
+  <body>
 
     <div id = "menu_bar">
+
       <a href = "/">
         <p id ="title_name">
           <b>
@@ -38,11 +39,12 @@
       </a>
 
       <li class="heading">
-        <b id="signout_heading">
+        <b>
+          Sign Out
         </b>
       </li>
 
-      <a href = "/html/services.html">
+      <a href="/services">
         <li class="heading">
           <b>
             Services
@@ -50,7 +52,7 @@
         </li>
       </a>
 
-      <a href = "/html/dashboard.html">
+      <a href="/dashboard">
         <li class="heading">
           <b>
             Dashboard
@@ -67,10 +69,6 @@
       </a>
     </div>
 
-    <div onclick="to_signout()" id = "signout_dropdown">
-      Sign Out
-    </div>
-
     <div id="side_bar">
       <img src = "/Images/notification.png" class="side_bar_images">
       </img>
@@ -84,66 +82,40 @@
 
     <div class="page_name">
       <b>
-        Services
+        Frequently Asked Questions
       </b>
     </div>
 
     <div class = "clearfix"/>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content" style="margin-top: 30px;">
-        <span class="close">&times;</span>
-        <center><b><p id="modal_title"></p></b></center>
-        <div id="dropdown">
-          <center>
-            <div id="modal_payment" class="dropbtn modal-content-none" style="width: 80%;cursor:pointer;">Payment Plan</div>
-          </center>
-          <div id="dropdown_parent" class="dropdown-content modal-content-dropdown">
-          </div>
-        </div>
-
-        <input class="modal-content-users" id="modal_users" type="text" placeholder="Add Users (Separate multiple users with commas)">
-        </input>
-        <div class="modal-content-users" id="create_modal">
-            <p style="margin-top: 10px;">Tabb Me!</p>
-        </div>
-      </div>
     </div>
+    
+    <div class="faq_cards">
+    	<center><h2> "Why use Tabby?"</h2></center>	
+    	<center><h3> Tabby helps you manage all the reoccurring payments that you have, neatly and effortlessly!</h3></center>
+    </div>
+    <div class="faq_cards">
+      <center><h2> "Can I pay my friends through your website?"</h2></center>
+      <center><h3> "Unfortunately not yet. But soon hopefully."</h3></center>
+    </div>
+    
+    <div class="faq_cards">
+    	<center><h2> "Can we split non- reoccurring payments?"</h2></center>
+    	<center><h3> "Definitely, this is what makes Tabby unique!"</h3></center> 
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "How do I give up on my ownership?"</h2></center>
+    	<center><h3> "Select the friend you want to pass ownership to in the event page and click Pass Ownership"</h3></center>
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "How many people can I add to a plan?"</h2></center>
+    	<center><h3> "As many as you want, be reasonable!"</h3></center>
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "Can I delete a payment plan?"</h2></center>
+    	<center><h3> "Yes, make sure you have collected all that is due and click Delete Event on the event page"</h3></center>
 
-    <div class = "clearfix"/>
-
-    <img onclick="open_modal('Custom', '#FDB813', '#fff7e6')" src="/Images/Create.png" class="service_images" style="margin-left: calc((100% - 1150px) / 2);">
-    </img>
-
-    <img onclick="open_modal('Spotify', '#1ed761', '#e9fcf0')" src="/Images/Spotify.png" class="service_images">
-    </img>
-
-    <img onclick="open_modal('Amazon', '#fdd400', '#fffbe6')" src="/Images/Amazon.png" class="service_images">
-    </img>
-
-    <br></br>
-
-    <img onclick="open_modal('Netflix', '#000000', '#ffe8e6')" src="/Images/Netflix.png" class="service_images" style="margin-left: calc((100% - 1150px) / 2);">
-    </img>
-
-    <img onclick="open_modal('Hulu', '#99cc34', '#f5faeb')" src="/Images/Hulu.png" class="service_images">
-    </img>
-
-    <img onclick="open_modal('HBO', '#000000', '#f2f2f2')" src="/Images/HBO.png" class="service_images">
-    </img>
-
-    <br></br>
-
-    <img onclick="open_modal('NFL Game Pass', '#133f70', '#e9f2fb')", src="/Images/NFL.png" class="service_images" style="margin-left: calc((100% - 1150px) / 2);">
-    </img>
-
-    <img onclick="open_modal('NBA League Pass', '#fda934', '#fff4e6')" src="/Images/NBA.png" class="service_images">
-    </img>
-
-    <img onclick="open_modal('MLB TV', '#000087', '#e6e6ff')" src="/Images/MLB.png" class="service_images">
-    </img>
+    </div>
 
     <div id="footer">
       <a href="mailto:tgih1999@gmail.com">
@@ -172,6 +144,5 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src = "/js/services.js"></script>
   </body>
 </html>
