@@ -435,9 +435,9 @@ function create_tab() {
       .then(function(snapshot) {
         if(!snapshot.exists()) {
           alert(snapshot.key + " does not exist. An invite has been sent to them to join Tabby!");
-          invitee_map[snapshot.key] = split_cost;
+          invitee_map[snapshot.key] = [snapshot.val().name,split_cost];
         } else {
-          members_map[snapshot.key] = split_cost;
+          members_map[snapshot.key] = [snapshot.val().name,split_cost];
            $.ajax({
               url: '/send_sms',
               method: 'POST',

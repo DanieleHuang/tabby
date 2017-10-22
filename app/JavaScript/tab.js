@@ -60,12 +60,12 @@ function attachEventDataListener(event_id) {
 	      var memberMap = debtors.members_map;
 	      if(memberMap != null) {
 
-	        for(memberVal in memberMap) {
+	        for(idx in memberMap) {
 							var memberDiv = document.createElement("P");
 							memberDiv.style.color = "white";
 							memberDiv.style.marginTop = "-15px";
 							memberDiv.style.fontSize = "18px";
-							memberDiv.innerHTML = memberVal.replace("-", ".");
+							memberDiv.innerHTML = memberMap[idx][0];
 							memberDiv.style.marginLeft = "25px";
 							participants_cost.appendChild(memberDiv);
 							count++;
@@ -74,12 +74,12 @@ function attachEventDataListener(event_id) {
 
 	      var inviteeMap = debtors.invitee_map;
 	      if(inviteeMap != null) {
-	        for(invitee in inviteeMap) {
+	        for(idx in inviteeMap) {
 						var memberDiv = document.createElement("P");
 						memberDiv.style.color = "white";
 						memberDiv.style.marginTop = "-15px";
 						memberDiv.style.fontSize = "18px";
-						memberDiv.innerHTML = invitee.replace("-", ".") + " (Invitation pending)";
+						memberDiv.innerHTML = inviteeMap[idx][0];
 						memberDiv.style.marginLeft = "25px";
 						participants_cost.appendChild(memberDiv);
 						count++;
