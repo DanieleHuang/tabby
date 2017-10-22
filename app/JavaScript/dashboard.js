@@ -17,6 +17,14 @@ function setup_dashboard()
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       signout_heading.innerHTML = user.displayName;
+      var arrow = document.createElement("IMG");
+      arrow.src = "/Images/drop_arrow.png";
+      arrow.style.width = "40px";
+      arrow.style.height = "40px";
+      arrow.style.float = "right";
+      arrow.style.marginTop = "-7px";
+
+      signout_heading.appendChild(arrow);
       signout_heading.style.cursor = "pointer";
       signout_heading.onclick = function()
       {

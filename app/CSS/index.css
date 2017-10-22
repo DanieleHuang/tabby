@@ -47,8 +47,9 @@ body
   padding: 10px 0px 5px 40px;
   border-radius: 0px 0px 0px 5px;
   position: fixed;
-  margin-left: calc(100% - 130px - 20px);
+  margin-left: calc(100% - 130px - 40px);
   display: none;
+  margin-right: 20px;
 }
 
 #menu_bar

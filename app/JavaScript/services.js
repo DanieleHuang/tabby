@@ -350,7 +350,7 @@ function create_tab() {
     return;
   }
 
-  console.log(split_cost);  
+  console.log(split_cost);
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
   var debtors_map = {};
@@ -394,7 +394,6 @@ function create_tab() {
           database.ref().update(updates);
         }
       });
-
   }
 
   var modal = document.getElementById('myModal');
