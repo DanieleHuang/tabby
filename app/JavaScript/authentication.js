@@ -9,17 +9,7 @@ function login(name) {
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
-      var userRef = firebase.database().ref("users/" + emailToURL(email));
-      userRef.once("value")
-        .then(function(snapshot) {
-          if(!snapshot.child("name").exists()) {
-            userRef.set({
-              "name": name
-            });
-          }
-        }
-      );
-      window.location.replace('/dashboard');
+      //window.location.replace('/dashboard');
     },
     function(error) {
 	  // Handle Errors here.
@@ -48,7 +38,18 @@ function register() {
 	firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function() {
       console.log("Created successfully");
-      login(name);
+      
+      var userRef = firebase.database().ref("users/" + emailToURL(email));
+      userRef.once("value").then(
+        function(snapshot) {
+          if(snapshot.exists() == false) {
+            console.log("DNE");
+            userRef.set({
+              "name": name
+            }).then(function() { login();});
+          }
+        }
+      );
     },
     function(error) {
     	// Handle Errors here.
