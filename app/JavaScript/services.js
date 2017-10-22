@@ -436,7 +436,7 @@ function create_tab() {
               dataType: 'json',
               data: {
                   phoneNumber: snapshot.val().phoneNumber,
-                  message: "You owe " + owner + " $" + split_cost.toFixed(2) + "."
+                  message: "You have a new monthly payment of $" + split_cost.toFixed(2) + " to " + owner + "."
               }
           }).done(function(data) {
               // The JSON sent back from the server will contain a success message
