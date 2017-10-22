@@ -9,12 +9,8 @@ function login() {
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
-<<<<<<< HEAD
 			window.location = "/dashboard";
       //window.location.replace('/dashboard');
-=======
-      window.location.replace('/dashboard');
->>>>>>> 6f7d6645f5a277edb6a3a16b61abbd365f4573e4
     },
     function(error) {
 	  // Handle Errors here.
@@ -42,6 +38,18 @@ function register() {
 
 	firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function() {
+			var user = firebase.auth().currentUser;
+			var first_name = document.getElementById("firstname").value;
+			var last_name = document.getElementById("lastname").value;
+			user.updateProfile({
+  			displayName: first_name + " " + last_name,
+  			photoURL: "https://example.com/jane-q-user/profile.jpg"
+			}).then(function() {
+  			// Update successful.
+			}).catch(function(error) {
+  			// An error happened.
+			});
+
       console.log("Created successfully");
 
       var userRef = firebase.database().ref("users/" + emailToURL(email));

@@ -6,7 +6,7 @@
    var signout_heading = document.getElementById("signout_heading");
    firebase.auth().onAuthStateChanged(function(user) {
      if (user) {
-       signout_heading.innerHTML = user.email;
+       signout_heading.innerHTML = user.displayName;
        signout_heading.style.cursor = "pointer";
        signout_heading.onclick = function()
        {
