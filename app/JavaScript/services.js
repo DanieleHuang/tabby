@@ -10,6 +10,7 @@ var nfl_payment = ["NFL Game Pass Yearly - $99"];
 var nba_payment = ["NBA One Team - $17.99", "NBA All Teams Monthly - $28.99", "NBA All Teams + More Monthly - $39.99"];
 var mlb_payment = ["MLB.TV Premium Monthly - $24.99", "MLB.TV Premium Yearly - $129.99", "MLB.TV Basic Monthly - $19.99", "MLB.TV Basic Yearly - $109.99"];
 
+<<<<<<< HEAD
 function setup_services()
 {
   var signout_heading = document.getElementById("signout_heading");
@@ -61,6 +62,8 @@ function signout_dropdown_hide(signout_heading, signout_dropdown)
   }
 }
 
+=======
+>>>>>>> 6f7d6645f5a277edb6a3a16b61abbd365f4573e4
 function open_modal(type, deepColor, backgroundColor)
 {
   var modal = document.getElementById('myModal');
@@ -329,6 +332,21 @@ function reset_modal_payments()
       }
     }
   }
+}
+
+
+function create_tab() {
+  var payment = document.getElementById("modal_payment");
+  var mem_string = document.getElementById("modal-content-users");
+  var members = mem_string.split(",");
+  var database = firebase.database();
+
+  var users_ref = database.ref('users');
+
+  for(int i=0; i<members.length; i++) {
+    
+  }
+
 }
 
 // When the user clicks anywhere outside of the modal, close it
