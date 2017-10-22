@@ -1,5 +1,4 @@
 function updateDashCards(eventList) {
-  console.log(eventList);
   var cardContainer = document.getElementById("dash_card_container");
   while (cardContainer.childNodes.length > 0) {
     cardContainer.removeChild(cardContainer.lastChild);
@@ -9,9 +8,8 @@ function updateDashCards(eventList) {
     return;
   }
 
-  for (event in eventList) {
-    var eventObj = eventList[event];
-    console.log(eventObj);
+  for (newEvent in eventList) {
+    var eventObj = eventList[newEvent];
     var newCard = document.createElement("DIV");
     newCard.className = "dashboard_card";
     newCard.onclick = () => {view_tab()};
@@ -41,6 +39,8 @@ function updateDashCards(eventList) {
       newOwner.style.marginTop = "-15px";
       newOwner.style.fontSize = "24px";
       newOwner.innerHTML = "(Owner)";
+      let scopedEvent = newEvent;
+      trash.onclick = () => {deleteEvent(scopedEvent)};
       trash.src = "/Images/delete.png";
       newCard.appendChild(newOwner);
       newCard.appendChild(trash);
@@ -54,28 +54,39 @@ function updateDashCards(eventList) {
 }
 
 function deleteEvent(eventId) {
+  console.log(eventId);
   var eventRef = firebase.database().ref("events/" + eventId);
   var usersList = [];
   eventRef.once('value').then(function(snapshot){
-    usersList.push(snapshot.ownerId);
-    var debtorList = snapshot.debtors.members_map;
-    if (debtorList != null) {
-      for(debtor in debtorsList) {
-        usersList.push(debtor);
+    var jsObject = snapshot.exportVal();
+    console.log(jsObject);
+    usersList.push(jsObject.ownerID);
+    var debtors = jsObject.debtors;
+
+    if(debtors != null) {
+      var memberMap = debtors.members_map;
+      if(memberMap != null) {
+        for(member in memberMap) {
+          usersList.push(member);
+        }
       }
-    }
-    debtorList = snapshot.debtors.invitee_map;
-    if (debtorList != null) {
-      for(debtor in debtorsList) {
-        usersList.push(debtor);
+
+      var inviteeMap = debtors.invitee_map;
+      if(inviteeMap != null) {
+        for(invitee in inviteeMap) {
+          usersList.push(invitee);
+        }
       }
     }
 
-    for(user in usersList) {
-      var eventListEventRef = firebase.database().ref("users/"+user+"/eventList"+eventId);
-      eventListEventRef.delete();
+    console.log(usersList);
+    for(idx in usersList) {
+      var eventRefPath = "users/" + usersList[idx] + "/eventList/" + eventId;
+      console.log(eventRefPath);
+      var eventListEventRef = firebase.database().ref(eventRefPath);
+      eventListEventRef.remove();
     }
-    eventRef.delete();
+    eventRef.remove();
   });
 }
 

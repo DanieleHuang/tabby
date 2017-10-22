@@ -387,8 +387,6 @@ function create_tab() {
     var owner_key = '/users/' + emailToURL(firebase.auth().currentUser.email) +'/eventList/' + new_key;
     updates[owner_key] = new_person_event;
 
-        console.log(updates);
-
     database.ref().update(updates);
 
     var modal = document.getElementById('myModal');
@@ -398,6 +396,11 @@ function create_tab() {
   }
 
   var members = mem_string.split(",");
+
+  var currUserEmail = firebase.auth().currentUser.email;
+  while(members.indexOf(currUserEmail) != -1) {
+    members.splice(members.indexOf(currUserEmail));
+  }
 
   var split_cost = total_cost/(members.length+1);
   if(isNaN(split_cost)) {
@@ -409,7 +412,6 @@ function create_tab() {
   var counter = 0;
 
   for(var i=0; i<members.length; i++) {
-
     specific_ref = users_ref.child(emailToURL(members[i].trim()));
     specific_ref.once("value")
       .then(function(snapshot) {
