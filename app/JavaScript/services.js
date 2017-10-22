@@ -338,10 +338,10 @@ function emailToURL(email) {
 function create_tab() {
   var payment = document.getElementById("modal_payment").innerHTML;
   var mem_string = document.getElementById("modal_users").value;
-  console.log(firebase.auth().currentUser);
   var event_name = payment.split(" ")[0];
   var total_cost = parseFloat(payment.split(" - $")[1]);
   var members = mem_string.split(",");
+
   var split_cost = total_cost/members.length;
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
@@ -350,21 +350,28 @@ function create_tab() {
   var database = firebase.database();
 
   var users_ref = database.ref('users');
+  console.log(members);
+
+  var counter = 0;
 
   for(var i=0; i<members.length; i++) {
     var stop = false;
 
-    specific_ref = users_ref.child(emailToURL(members[i]))  
+    specific_ref = users_ref.child(emailToURL(members[i]));
     specific_ref.once("value")
       .then(function(snapshot) {
         if(!snapshot.exists()) {
-          alert(members[i] + " does not exist.");
+          alert(snapshot.key + " does not exist.");
           stop = true;
           return false;
 
         } else {
+          console.log(snapshot.key);
           debtors_map[snapshot.val().name] = split_cost;
         }
+        counter++;
+        console.log(counter);
+
       });
 
       if(stop) {
@@ -385,6 +392,8 @@ function create_tab() {
   var updates = {};
   updates['/events/' + new_key] = new_event;
 
+  console.log(debtors_map);
+  console.log(counter);
   database.ref().update(updates);
 
 }
