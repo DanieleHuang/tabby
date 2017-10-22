@@ -99,8 +99,6 @@ function attachEventDataListener(event_id) {
   );
 };
 
-
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   var modal = document.getElementById('tab_modal');

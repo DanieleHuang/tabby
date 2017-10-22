@@ -359,7 +359,7 @@ function reset_modal_payments()
 }
 
 function emailToURL(email) {
-  return email.replace(/\./g,'-');
+  return email.replace(/\./g,'-').toLowerCase();
 }
 
 function create_tab() {
