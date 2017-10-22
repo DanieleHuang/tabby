@@ -74,6 +74,8 @@ function signout_dropdown_hide(signout_heading, signout_dropdown, arrow)
 
 function open_modal(type, deepColor, backgroundColor)
 {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
   var modal = document.getElementById('myModal');
 
   // Get the <span> element that closes the modal
@@ -124,6 +126,13 @@ function open_modal(type, deepColor, backgroundColor)
     modal_payment.style.padding = "10px 20px 10px 20px";
 
     populate_modal(type);
+
+  }else {
+          window.location = "/login";
+          return;
+  }
+});
+
 }
 
 function populate_modal(type)
