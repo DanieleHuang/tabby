@@ -224,7 +224,8 @@ body
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: hidden; /* Enable scroll if needed */
+
 }
 
 #modal_title
@@ -252,7 +253,7 @@ body
 
 /* Modal Content/Box */
 .modal-content {
-    height: 500px;
+    height: 300px;
     float: left;
     margin-left: calc((100% - 500px) / 2);
     position: fixed;
@@ -270,9 +271,17 @@ body
 
 #create_modal
 {
-    background-color: black;
-    width: 430px;
-    height: 30px;
+    background-color: grey;
+    float: left;
+    width: 340px;
+    height: 40px;
+    display: none;
+    position: fixed;
+    margin-top: 150px;
+    margin-left: 80px;
+    border-radius: 25px;
+    text-align: center;
+
 }
 
 /* The Close Button */
@@ -310,7 +319,7 @@ body
 /* The container <div> - needed to position the dropdown content */
 #dropdown {
     width: 100%;
-    height: 100%;
+    height: 100px;
     position: relative;
     display: inline-block;
     float: left;
