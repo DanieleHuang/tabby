@@ -7,7 +7,7 @@ function view_tab(event_id) {
 	var span = document.getElementsByClassName("close")[0];
 
 	modal.style.display = "block";
-	modal_content.style.display = "none";
+	modal_content.style.display = "block";
 
 	span.onclick = function() {
       modal.style.display = "none";
