@@ -1,7 +1,7 @@
 /* File Name: login.js
  */
 
-function login(name) {
+function login() {
 	console.log("Attempt login");
 	
 	let email = document.getElementById('email').value;
@@ -9,7 +9,7 @@ function login(name) {
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
-      //window.location.replace('/dashboard');
+      window.location.replace('/dashboard');
     },
     function(error) {
 	  // Handle Errors here.

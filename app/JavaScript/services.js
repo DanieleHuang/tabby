@@ -10,53 +10,6 @@ var nfl_payment = ["NFL Game Pass Yearly - $99"];
 var nba_payment = ["NBA One Team - $17.99", "NBA All Teams Monthly - $28.99", "NBA All Teams + More Monthly - $39.99"];
 var mlb_payment = ["MLB.TV Premium Monthly - $24.99", "MLB.TV Premium Yearly - $129.99", "MLB.TV Basic Monthly - $19.99", "MLB.TV Basic Yearly - $109.99"];
 
-function setup_services()
-{
-  var signout_heading = document.getElementById("signout_heading");
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      signout_heading.innerHTML = user.email;
-      signout_heading.style.cursor = "pointer";
-      signout_heading.onclick = function()
-      {
-        var signout_dropdown = document.getElementById("signout_dropdown");
-        signout_dropdown.style.display = "block";
-        signout_dropdown.style.cursor = "pointer";
-        signout_dropdown.className += " hover_div";
-        signout_heading.onclick = function()
-        {
-          signout_dropdown_hide(signout_heading, signout_dropdown);
-        }
-        signout_dropdown.onclick = function()
-        {
-          //TODO: Sign them out
-        }
-      }
-    } else {
-      signout_heading.innerHTML = "Login";
-      signout_heading.style.cusor = "pointer";
-      console.log("here");
-      signout_heading.onclick = function()
-      {
-        window.location = "login.html";
-      }
-    }
-  });
-}
-
-function signout_dropdown_hide(signout_heading, signout_dropdown)
-{
-  signout_dropdown.style.display = "none";
-  signout_heading.onclick = function()
-  {
-    signout_dropdown.style.display = "block";
-    signout_heading.onclick = function()
-    {
-      signout_dropdown_hide(signout_heading, signout_dropdown);
-    }
-  }
-}
-
 function open_modal(type, deepColor, backgroundColor)
 {
   var modal = document.getElementById('myModal');
@@ -325,6 +278,21 @@ function reset_modal_payments()
       }
     }
   }
+}
+
+
+function create_tab() {
+  var payment = document.getElementById("modal_payment");
+  var mem_string = document.getElementById("modal-content-users");
+  var members = mem_string.split(",");
+  var database = firebase.database();
+
+  var users_ref = database.ref('users');
+
+  for(int i=0; i<members.length; i++) {
+    
+  }
+
 }
 
 // When the user clicks anywhere outside of the modal, close it
