@@ -3,12 +3,13 @@
 
 function login(name) {
 	console.log("Attempt login");
-	
+
 	let email = document.getElementById('email').value;
 	let password = document.getElementById('password').value;
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
+			window.location = "/dashboard";
       //window.location.replace('/dashboard');
     },
     function(error) {
@@ -38,7 +39,7 @@ function register() {
 	firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function() {
       console.log("Created successfully");
-      
+
       var userRef = firebase.database().ref("users/" + emailToURL(email));
       userRef.once("value").then(
         function(snapshot) {
@@ -46,7 +47,10 @@ function register() {
             console.log("DNE");
             userRef.set({
               "name": name
-            }).then(function() { login();});
+            }).then(function() {
+							login();
+							window.location = "/services";
+						});
           }
         }
       );
@@ -63,4 +67,3 @@ function register() {
     	console.log(error);
   	});
 }
-

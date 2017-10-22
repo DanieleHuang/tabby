@@ -29,8 +29,12 @@ function setup_services()
         }
         signout_dropdown.onclick = function()
         {
-          //TODO: Sign them out
-        }
+          firebase.auth().signOut().then(function() {
+            console.log('Signed Out');
+            signout_dropdown.style.display = "none";
+          }, function(error) {
+            console.error('Sign Out Error', error);
+          });        }
       }
     } else {
       signout_heading.innerHTML = "Login";
@@ -38,7 +42,7 @@ function setup_services()
       console.log("here");
       signout_heading.onclick = function()
       {
-        window.location = "login.html";
+        window.location = "/login";
       }
     }
   });
