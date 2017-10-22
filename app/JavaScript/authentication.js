@@ -1,16 +1,24 @@
 /* File Name: login.js
  */
 
-function login() {
+function login(name) {
 	console.log("Attempt login");
 	
 	let email = document.getElementById('email').value;
 	let password = document.getElementById('password').value;
-	console.log(email);
-	console.log(password);
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
+      var userRef = firebase.database().ref("users/" + emailToURL(email));
+      userRef.once("value")
+        .then(function(snapshot) {
+          if(!snapshot.child("name").exists()) {
+            userRef.set({
+              "name": name
+            });
+          }
+        }
+      );
       window.location.replace('/dashboard');
     },
     function(error) {
@@ -39,14 +47,8 @@ function register() {
 
 	firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function() {
-      login();
-      var userRef = firebase.database().ref("users/" + emailToURL(email));
-      userRef.set({
-        "name": name,
-        "eventList": [],
-        "pendingOwnerships": [],
-        "debts": []
-      });
+      console.log("Created successfully");
+      login(name);
     },
     function(error) {
     	// Handle Errors here.
