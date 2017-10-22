@@ -6,19 +6,6 @@
     </script>
     <script src="/js/authentication.js"></script>
     <script>
-      $(document).ready(function(){
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-            $('html, body').animate({
-            scrollTop: $(hash).offset().top
-            }, 800, function(){
-            window.location.hash = hash;
-            });
-          }
-        });
-      });
       $(window).scroll(function() {
           if ($(document).scrollTop() > 0) {
             $("#menu_bar").css("background-color", "white");
@@ -39,6 +26,8 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="/css/auth.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   </head>
 
   <body>
@@ -74,7 +63,7 @@
           </b>
         </li>
       </a>
-      
+
       <a href="/faq">
         <li class="heading">
           <b>
