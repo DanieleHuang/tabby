@@ -24,10 +24,9 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
-    <link rel="stylesheet" type="text/css" href="/CSS/event.css">
   </head>
 
-  <body onload="setup_dashboard()">
+  <body>
 
     <div id = "menu_bar">
 
@@ -40,7 +39,8 @@
       </a>
 
       <li class="heading">
-        <b id="signout_heading" style="cursor:pointer;">
+        <b>
+          Sign Out
         </b>
       </li>
 
@@ -69,10 +69,6 @@
       </a>
     </div>
 
-    <div onclick="to_signout()" id = "signout_dropdown">
-      Sign Out
-    </div>
-
     <div id="side_bar">
       <img src = "/Images/notification.png" class="side_bar_images">
       </img>
@@ -86,61 +82,39 @@
 
     <div class="page_name">
       <b>
-        Active Tabbs
+        Frequently Asked Questions
       </b>
     </div>
 
-    <!-- create_tab modal -->
-    <div id="create_tab_modal" class="tab_modal">
-      <!-- modal content -->
-      <div class="create_tab_modal_content">
-        <span class="close">&times;</span>
-        <center><b><p id="modal_title">Temp Event</p></b></center>
-        <div class="info">
-          <table>
-            <tr>
-              <th class="table_label">Owner:</th>
-              <th id="owner">lala</th>
-            </tr>
-            <tr>
-              <th class="table_label">Total Cost:</th>
-              <th id="total_cost">$0.00</th>
-            </tr>
-            <tr>
-              <th class="table_label">Month:</th>
-              <th id="month">October</th>
-            </tr>
-          </table>
-          <br></br>
-          <table id="participants_cost">
-            <tr class="table_header">
-              <th>Member</th>
-              <th>Owes</th>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
     <div class = "clearfix"/>
-    <div class="dashboard_cards">
 
-      <div class="dashboard_card" onclick="view_tab()">
-        <p class="card_text">Temp</p>
-      </div>
-      <!---
-      <div class="dashboard_card">
-      </div>
-      <div class="dashboard_card">
-      </div>
+    </div>
+    
+    <div class="faq_cards">
+    	<center><h2> "Why use Tabby?"</h2></center>	
+    	<center><h3> Tabby helps you manage all the reoccurring payments that you have, neatly and effortlessly!</h3></center>
+    </div>
+    <div class="faq_cards">
+      <center><h2> "Can I pay my friends through your website?"</h2></center>
+      <center><h3> "Unfortunately not yet. But soon hopefully."</h3></center>
+    </div>
+    
+    <div class="faq_cards">
+    	<center><h2> "Can we split non- reoccurring payments?"</h2></center>
+    	<center><h3> "Definitely, this is what makes Tabby unique!"</h3></center> 
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "How do I give up on my ownership?"</h2></center>
+    	<center><h3> "Select the friend you want to pass ownership to in the event page and click Pass Ownership"</h3></center>
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "How many people can I add to a plan?"</h2></center>
+    	<center><h3> "As many as you want, be reasonable!"</h3></center>
+    </div>
+    <div class="faq_cards">
+    	<center><h2> "Can I delete a payment plan?"</h2></center>
+    	<center><h3> "Yes, make sure you have collected all that is due and click Delete Event on the event page"</h3></center>
 
-      <div class="dashboard_card">
-      </div>
-      <div class="dashboard_card">
-      </div>
-      <div class="dashboard_card">
-      </div>
-      -->
     </div>
 
     <div id="footer">
@@ -170,7 +144,5 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script type="text/javascript" src="/js/tab.js"></script>
-    <script type="text/javascript" src="/js/dashboard.js"></script>
   </body>
 </html>

@@ -27,7 +27,7 @@
     <link rel="stylesheet" type="text/css" href="/css/index.css">
   </head>
 
-  <body>
+  <body onload="setup_index()">
     <div id = "menu_bar">
       <a href = "/">
         <p id ="title_name">
@@ -37,13 +37,11 @@
         </p>
       </a>
 
-      <a href="/login">
         <li class="heading">
-          <b>
-            Login
+          <b id="signout_heading" style="cursor:pointer;">
+            
           </b>
         </li>
-      </a>
 
       <a href="/services">
         <li class="heading">
@@ -68,6 +66,10 @@
           </b>
         </li>
       </a>
+    </div>
+
+    <div onclick="to_signout()" id = "signout_dropdown">
+      Sign Out
     </div>
 
     <div class = "clearfix"/>
@@ -136,5 +138,6 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script type="text/javascript" src="/js/index.js"></script>
   </body>
 </html>
