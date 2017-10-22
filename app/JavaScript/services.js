@@ -16,6 +16,14 @@ function setup_services()
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       signout_heading.innerHTML = user.displayName;
+      var arrow = document.createElement("IMG");
+      arrow.src = "/Images/drop_arrow.png";
+      arrow.style.width = "40px";
+      arrow.style.height = "40px";
+      arrow.style.float = "right";
+      arrow.style.marginTop = "-7px";
+
+      signout_heading.appendChild(arrow);
       signout_heading.style.cursor = "pointer";
       signout_heading.onclick = function()
       {
@@ -350,7 +358,6 @@ function create_tab() {
     return;
   }
 
-  console.log(split_cost);
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
   var debtors_map = {};
@@ -371,10 +378,9 @@ function create_tab() {
 
         } else {
           console.log(snapshot.key);
-          debtors_map[snapshot.val().name] = split_cost;
+          debtors_map[snapshot.key] = split_cost;
         }
         counter++;
-        console.log(counter);
 
         if(counter == members.length) {
           var new_event = {
@@ -386,11 +392,25 @@ function create_tab() {
           }
 
           var new_key = database.ref().child('events').push().key;
-          console.log(new_key);
+
           var updates = {};
           updates['/events/' + new_key] = new_event;
 
-          console.log(debtors_map);
+          var new_person_event = {
+            owner: owner,
+            ownerEmail: firebase.auth().currentUser.email,
+            eventName: event_name,
+            amountPaying: split_cost,
+          }
+
+          for(person in debtors_map) {
+            var new_person_key = '/users/' + person + '/eventList/' + new_key;
+            updates[new_person_key] = new_person_event;
+          }
+
+          var owner_key = '/users/' + emailToURL(firebase.auth().currentUser.email) +'/eventList/' + new_key;
+          updates[owner_key] = new_person_event;
+
           database.ref().update(updates);
         }
       });
