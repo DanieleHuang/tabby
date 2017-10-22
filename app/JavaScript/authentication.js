@@ -18,7 +18,7 @@ function login() {
 };
 
 function emailToURL(email) {
-  return email.replace(/\./g,'-');
+  return email.replace(/\./g,'-').toLowerCase();
 }
 
 function register() {
