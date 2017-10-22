@@ -1,7 +1,6 @@
 /* File Name: services.js
  */
-
-var spotify_payment = ["Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
+ var spotify_payment = ["Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
 var amazon_payment = ["Amazon Prime Monthly Video Membership - $8.99", "Amazon Prime Monthly - $10.99", "Amazon Prime Yearly - $99"];
 var netflix_payment = ["Netflix Basic Monthly - $7.99", "Netflix Standard Monthly - $10.99", "Netflix Premium Monthly - $13.99"];
 var hulu_payment = ["Hulu 1st Year Monthly - $5.99", "Hulu Monthly - $7.99", "Hulu with Live TV Monthly - $39.99"];
@@ -420,7 +419,34 @@ function create_tab() {
           invitee_map[snapshot.key] = split_cost;
         } else {
           members_map[snapshot.key] = split_cost;
+          console.log("trying to text...");
+
+          $.ajax({url: "/send_sms",
+            type: "POST",
+            data: '{"phone_number": ' + snapshot.val().phoneNumber + ', "message": "You owe me money"}',
+            success: function(output) {
+              console.log(output);
+            },
+            error: function(err) {
+              console.log(err);
+            }
+          });
+          //  $.ajax({
+          //     url: '/send_sms',
+          //     method: 'POST',
+          //     // dataType: 'json',
+          //     // data: {
+          //     //     phoneNumber: snapshot.val().phoneNumber,
+          //     //     message: "YOU OWE ME MONEY"
+          //     // }
+          // }).done(function(data) {
+          //     // The JSON sent back from the server will contain a success message
+          //     alert(data.message);
+          // }).fail(function(error) {
+          //     alert(JSON.stringify(error));
+          // });
         }
+
         counter++;
 
         if(counter == members.length) {
