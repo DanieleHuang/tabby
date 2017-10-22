@@ -39,7 +39,6 @@ function setup_services()
     } else {
       signout_heading.innerHTML = "Login";
       signout_heading.style.cusor = "pointer";
-      console.log("here");
       signout_heading.onclick = function()
       {
         window.location = "/login";
@@ -332,17 +331,26 @@ function reset_modal_payments()
 }
 
 function emailToURL(email) {
-  return email.replace(/\./g,'¤');
+  return email.replace(/\./g,'-');
 }
 
 function create_tab() {
   var payment = document.getElementById("modal_payment").innerHTML;
   var mem_string = document.getElementById("modal_users").value;
+  if(mem_string.length == 0) {
+    return;
+  }
+
   var event_name = payment.split(" ")[0];
   var total_cost = parseFloat(payment.split(" - $")[1]);
   var members = mem_string.split(",");
 
-  var split_cost = total_cost/members.length;
+  var split_cost = total_cost/(members.length+1);
+  if(isNaN(split_cost)) {
+    return;
+  }
+
+  console.log(split_cost);  
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
   var debtors_map = {};
@@ -350,20 +358,16 @@ function create_tab() {
   var database = firebase.database();
 
   var users_ref = database.ref('users');
-  console.log(members);
 
   var counter = 0;
 
   for(var i=0; i<members.length; i++) {
-    var stop = false;
 
-    specific_ref = users_ref.child(emailToURL(members[i]));
+    specific_ref = users_ref.child(emailToURL(members[i].trim()));
     specific_ref.once("value")
       .then(function(snapshot) {
         if(!snapshot.exists()) {
           alert(snapshot.key + " does not exist.");
-          stop = true;
-          return false;
 
         } else {
           console.log(snapshot.key);
@@ -372,30 +376,29 @@ function create_tab() {
         counter++;
         console.log(counter);
 
+        if(counter == members.length) {
+          var new_event = {
+            eventName: event_name,
+            owner: owner,
+            ownerID: owner_id,
+            totalCost: total_cost,
+            debtors: debtors_map
+          }
+
+          var new_key = database.ref().child('events').push().key;
+          console.log(new_key);
+          var updates = {};
+          updates['/events/' + new_key] = new_event;
+
+          console.log(debtors_map);
+          database.ref().update(updates);
+        }
       });
 
-      if(stop) {
-        return;
-      }
   }
 
-  var new_event = {
-    eventName: event_name,
-    owner: owner,
-    ownerID: owner_id,
-    totalCost: total_cost,
-    debtors: debtors_map
-  }
-
-  var new_key = database.ref().child('events').push().key;
-
-  var updates = {};
-  updates['/events/' + new_key] = new_event;
-
-  console.log(debtors_map);
-  console.log(counter);
-  database.ref().update(updates);
-
+  var modal = document.getElementById('myModal');
+  modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
