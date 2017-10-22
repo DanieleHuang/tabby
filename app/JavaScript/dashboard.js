@@ -10,6 +10,64 @@ function Dashboard() {
   this.initFirebase();
 }
 
+function setup_dashboard()
+{
+  var signout_heading = document.getElementById("signout_heading");
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      signout_heading.innerHTML = user.email;
+      signout_heading.style.cursor = "pointer";
+      signout_heading.onclick = function()
+      {
+        var signout_dropdown = document.getElementById("signout_dropdown");
+        signout_dropdown.style.display = "block";
+        signout_dropdown.style.cursor = "pointer";
+        signout_dropdown.className += " hover_div";
+        signout_heading.onclick = function()
+        {
+          signout_dropdown_hide(signout_heading, signout_dropdown);
+        }
+        signout_dropdown.onclick = function()
+        {
+          //TODO: Sign them out
+        }
+      }
+    } else {
+      signout_heading.innerHTML = "Login";
+      signout_heading.style.cusor = "pointer";
+      console.log("here");
+      signout_heading.onclick = function()
+      {
+        window.location = "login.html";
+      }
+    }
+  });
+}
+
+function signout_dropdown_hide(signout_heading, signout_dropdown)
+{
+  signout_dropdown.style.display = "none";
+  signout_heading.onclick = function()
+  {
+    signout_dropdown.style.display = "block";
+    signout_heading.onclick = function()
+    {
+      signout_dropdown_hide(signout_heading, signout_dropdown);
+    }
+  }
+}
+
+function to_signout()
+{
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+  } else {
+    // No user is signed in.
+  }
+});
+}
+/*
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 Dashboard.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
@@ -31,7 +89,7 @@ Dashboard.prototype.attachDataListener = function() {
   this.userRef = this.database.ref(refPath);
   // Make sure we remove all previous listeners.
   this.userRef.off();
-  this.userRef.on('value', 
+  this.userRef.on('value',
   	function(snapshot) {
   		this.updateData(snapshot.child("name").val(),
   			snapshot.child("eventList").val());
@@ -90,4 +148,4 @@ Dashboard.prototype.checkSignedInWithMessage = function() {
 
 window.onload = function() {
   window.dashboard = new Dashboard();
-};
+};*/

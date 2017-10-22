@@ -26,11 +26,11 @@
     <link rel="stylesheet" type="text/css" href="/CSS/index.css">
   </head>
 
-  <body>
+  <body onload="setup_dashboard()">
 
     <div id = "menu_bar">
 
-      <a href = "/">
+      <a href = "index.html">
         <p id ="title_name">
           <b>
             tabby
@@ -39,12 +39,12 @@
       </a>
 
       <li class="heading">
-        <b>
-          Sign Out
+        <b id="signout_heading">
+          Login
         </b>
       </li>
 
-      <a href="/services">
+      <a href = "/html/services.html">
         <li class="heading">
           <b>
             Services
@@ -52,13 +52,16 @@
         </li>
       </a>
 
-      <a href="/dashboard">
+      <a href = "/html/dashboard.html">
         <li class="heading">
           <b>
             Dashboard
           </b>
         </li>
       </a>
+    </div>
+    <div onclick="to_signout()" id = "signout_dropdown">
+      Sign Out
     </div>
 
     <div id="side_bar">
@@ -121,5 +124,6 @@
       };
       firebase.initializeApp(config);
     </script>
+    <script src = "/js/dashboard.js"></script>
   </body>
 </html>
