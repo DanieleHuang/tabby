@@ -363,7 +363,9 @@ function create_tab() {
 
   var owner_id = emailToURL(firebase.auth().currentUser.email);
   var owner = firebase.auth().currentUser.displayName;
-  var debtors_map = {};
+  var members_map = {};
+  var invitee_map = {};
+  var debtors_map = {members_map, invitee_map};
 
   var database = firebase.database();
 
@@ -378,10 +380,10 @@ function create_tab() {
       .then(function(snapshot) {
         if(!snapshot.exists()) {
           alert(snapshot.key + " does not exist.");
-
+          debtors_map[1][emailToURL(members[i].trim())] = split_cost;
         } else {
           console.log(snapshot.key);
-          debtors_map[snapshot.key] = split_cost;
+          debtors_map[0][snapshot.key] = split_cost;
         }
         counter++;
 
@@ -406,7 +408,7 @@ function create_tab() {
             amountPaying: split_cost,
           }
 
-          for(person in debtors_map) {
+          for(person in debtors_map[0]) {
             var new_person_key = '/users/' + person + '/eventList/' + new_key;
             updates[new_person_key] = new_person_event;
           }
