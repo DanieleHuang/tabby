@@ -9,18 +9,21 @@ function updateDashCards(eventList) {
     return;
   }
 
-  for (var i=0; i < eventList.length; i++) {
+  for (event in eventList) {
+    var eventObj = eventList[event];
+    console.log(eventObj);
     var newCard = document.createElement("DIV");
     newCard.className = "dashboard_card";
     newCard.onclick = () => {view_tab()};
 
     var newParagraph = document.createElement("P");    
-    newParagraph.innerHTML = eventList[i].eventName;
-    if(eventList[i].ownerId == emailToURL(firebase.auth().currentUser.email)) {
+    newParagraph.innerHTML = eventObj.eventName;
+    if(eventObj.ownerEmail == firebase.auth().currentUser.email) {
       newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "(Owner)"
     }
-    newParagraph.innerHTML = newParagraph.innerHTML + '\n' + eventList[i].amountPaying;
+    newParagraph.innerHTML = newParagraph.innerHTML + '\n' + "$"+ (eventObj.amountPaying.toFixed(2));
     newCard.style.textAlign = "center";
+    newCard.appendChild(newParagraph);
     cardContainer.appendChild(newCard);
   }
 
