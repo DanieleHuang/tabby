@@ -90,7 +90,6 @@ function open_modal(type, deepColor, backgroundColor)
     {
       content[i].style.display = "block";
       content[i].style.color = "white";
-      content[i].style.borderColor = deepColor;
       content[i].style.backgroundColor = deepColor;
     }
 

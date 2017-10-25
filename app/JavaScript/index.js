@@ -13,6 +13,7 @@
        arrow.style.height = "40px";
        arrow.style.float = "right";
        arrow.style.marginTop = "-7px";
+       arrow.id="signout_arrow";
 
        signout_heading.appendChild(arrow);
        signout_heading.style.cursor = "pointer";
