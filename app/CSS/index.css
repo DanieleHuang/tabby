@@ -201,14 +201,13 @@ body
 
 .dashboard_card
 {
-  width: 350px;
-  height: 200px;
+  width: 275px;
+  height: 325px;
   background-color: #FDB813; /*#1c8adb;*/
   float: left;
-  margin-left: calc((100% - 1050px) / 4);
-  border-radius: 15px;
+  margin-left: calc((1135px - 825px) / 2);
+  border-radius: 5px;
   margin-top: 50px;
-  box-shadow: 5px 5px 5px grey;
   transition: 0.5s;
   cursor: pointer;
 }
@@ -293,11 +292,12 @@ h4{
   font-size: 24px;
   border: none;
   float: left;
-  margin-left: 10%;
+  margin-left: calc(((100% - 1150px) / 2));
   margin-top: 25px;
   padding: 0px 0px 0px 15px;
   color: white;
   border-radius: 25px;
+  max-width: 1135px;
 }
 
 --------------

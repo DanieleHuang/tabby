@@ -26,24 +26,28 @@ function updateDashCards(eventList) {
     cardContainer.appendChild(direct_arrow);
     return;
   }
-
+  var counter = 0;
   for (newEvent in eventList) {
     let scopedEvent = newEvent;
 
     var eventObj = eventList[newEvent];
     var newCard = document.createElement("DIV");
     newCard.className = "dashboard_card";
+    if (counter++ % 3 == 0)
+    {
+      newCard.style.marginLeft = "calc(((100% - 1150px) / 2))";
+    }
 
 
     var newParagraph = document.createElement("P");
     newParagraph.style.color = "white";
-    newParagraph.style.fontSize = "28px";
+    newParagraph.style.fontSize = "24px";
 
     newParagraph.innerHTML = eventObj.eventName;
 
     var newPrice = document.createElement("P");
     newPrice.style.color = "white";
-    newPrice.style.fontSize = "30px";
+    newPrice.style.fontSize = "24px";
     newPrice.innerHTML = "You Pay: $"+ (eventObj.amountPaying.toFixed(2));
     newPrice.style.marginTop = "-15px";
     newCard.style.textAlign = "center";
@@ -69,8 +73,9 @@ function updateDashCards(eventList) {
       trash.style.width = "40px";
       trash.style.height = "40px";
       trash.style.float = "right";
-      trash.style.marginTop = "0px";
+      trash.style.marginTop = "155px";
       trash.style.marginRight = "10px";
+      trash.className += " hover_div";
     }
     newCard.onclick = function(event)
     {
