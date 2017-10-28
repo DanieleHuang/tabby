@@ -79,8 +79,7 @@ function updateDashCards(eventList) {
     }
     newCard.onclick = function(event)
     {
-      var trash_can = document.getElementById("trash_icon");
-      if (event.target != trash_can )
+      if (event.target.id != "trash_icon" )
       {
         view_tab(scopedEvent);
       }
@@ -115,13 +114,13 @@ function deleteEvent(eventId) {
     }
 
     console.log(usersList);
+    eventRef.remove();
     for(idx in usersList) {
       var eventRefPath = "users/" + usersList[idx] + "/eventList/" + eventId;
       console.log(eventRefPath);
       var eventListEventRef = firebase.database().ref(eventRefPath);
       eventListEventRef.remove();
     }
-    eventRef.remove();
   });
 }
 
