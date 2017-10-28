@@ -9,6 +9,56 @@ var nfl_payment = ["NFL Game Pass Yearly - $99"];
 var nba_payment = ["NBA One Team - $17.99", "NBA All Teams Monthly - $28.99", "NBA All Teams + More Monthly - $39.99"];
 var mlb_payment = ["MLB.TV Premium Monthly - $24.99", "MLB.TV Premium Yearly - $129.99", "MLB.TV Basic Monthly - $19.99", "MLB.TV Basic Yearly - $109.99"];
 
+var custom_bar = ["custom"];
+var spotify_bar = ["spotify", "music", "playlist"];
+var amazon_bar = ["amazon", "prime"];
+var netflix_bar = ["netflix", "chill"];
+var hulu_bar = ["hulu"];
+var hbo_bar = ["hbo", "home box office"];
+var nfl_bar = ["nfl", "national football league"];
+var nba_bar = ["nba", "national basketball league"];
+var mlb_bar = ["mlb", "major league baseball"];
+
+var search_bar = [custom_bar, spotify_bar, amazon_bar, netflix_bar, hulu_bar, hbo_bar, nfl_bar, nba_bar, mlb_bar];
+
+document.getElementById("search_bar").addEventListener('input', displaySearch);
+
+function displaySearch()
+{
+  var service_images = document.getElementsByClassName("service_images");
+  var search_bar_value = document.getElementById("search_bar").value;
+  if (search_bar_value == "")
+  {
+    for (var i = 0; i < service_images.length; i++)
+    {
+      service_images[i].style.display = "inline";
+    }
+    return;
+  }
+  for (var i = 0; i < service_images.length; i++)
+  {
+    service_images[i].style.display = "none";
+  }
+  for (var i = 0; i < search_bar.length; i++)
+  {
+      for (var j = 0; j < search_bar[i].length; j++)
+      {
+        if (search_bar[i][j].indexOf(search_bar_value) != -1)
+        {
+          service_images[i].style.display = "inline";
+        }
+      }
+  }
+
+
+  if (search_bar_value.toUpperCase() == "spotify".toUpperCase())
+  {
+    service_images[1].style.display = "inline";
+
+  }
+}
+
+
 function setup_services()
 {
   var signout_heading = document.getElementById("signout_heading");

@@ -276,6 +276,15 @@ h4{
   box-shadow: 5px 5px 5px grey;
   transition: 0.5s;
   cursor: pointer;
+  display: inline;
+}
+
+#service_img_wrap
+{
+  margin-left: calc(((100% - 1150px) / 2) - 125px);
+  width: 1350px;
+  height: 80%;
+  min-height: 800px;
 }
 
 .service_images:hover
