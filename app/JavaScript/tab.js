@@ -34,7 +34,7 @@ function attachEventDataListener(event_id) {
 		var eventObject = snapshot.exportVal();
 		var modal_title = document.getElementById("modal_title");
 		modal_title.innerHTML = eventObject.eventName;
-	
+
 		var owner = document.getElementById("owner");
 		owner.innerHTML = eventObject.owner;
 		if (eventObject.ownerID == emailToURL(firebase.auth().currentUser.email))

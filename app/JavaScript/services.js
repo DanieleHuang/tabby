@@ -1,6 +1,6 @@
 /* File Name: services.js
  */
- var spotify_payment = ["Spotify Premium Student Monthly - $4.99", "Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
+var spotify_payment = ["Spotify Premium Student Monthly - $4.99", "Spotify Premium Monthly - $9.99", "Spotify Family Monthly - $14.99"];
 var amazon_payment = ["Amazon Prime Monthly Video Membership - $8.99", "Amazon Prime Monthly - $10.99", "Amazon Prime Yearly - $99"];
 var netflix_payment = ["Netflix Basic Monthly - $7.99", "Netflix Standard Monthly - $10.99", "Netflix Premium Monthly - $13.99"];
 var hulu_payment = ["Hulu 1st Year Monthly - $5.99", "Hulu Monthly - $7.99", "Hulu with Live TV Monthly - $39.99"];
@@ -64,7 +64,14 @@ function setup_services()
   var signout_heading = document.getElementById("signout_heading");
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      signout_heading.innerHTML = user.displayName;
+      if (localStorage.getItem("name"))
+      {
+        signout_heading.innerHTML = localStorage.getItem("name");
+      }
+      else
+      {
+        signout_heading.innerHTML = user.displayName;
+      }
       var arrow = document.createElement("IMG");
       arrow.src = "/Images/drop_arrow.png";
       arrow.style.width = "40px";

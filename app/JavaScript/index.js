@@ -6,7 +6,14 @@
    var signout_heading = document.getElementById("signout_heading");
    firebase.auth().onAuthStateChanged(function(user) {
      if (user) {
-       signout_heading.innerHTML = user.displayName;
+       if (localStorage.getItem("name"))
+       {
+         signout_heading.innerHTML = localStorage.getItem("name");
+       }
+       else
+       {
+         signout_heading.innerHTML = user.displayName;
+       }
        var arrow = document.createElement("IMG");
        arrow.src = "/Images/drop_arrow.png";
        arrow.style.width = "40px";

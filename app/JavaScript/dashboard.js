@@ -122,7 +122,14 @@ function setup_dashboard()
     if (user) {
       var dashboard_search_bar = document.getElementById("dashboard_search_bar");
       dashboard_search_bar.style.display = "block";
-      signout_heading.innerHTML = user.displayName;
+      if (localStorage.getItem("name"))
+      {
+        signout_heading.innerHTML = localStorage.getItem("name");
+      }
+      else
+      {
+        signout_heading.innerHTML = user.displayName;
+      }
       var arrow = document.createElement("IMG");
       arrow.src = "/Images/drop_arrow.png";
       arrow.style.width = "40px";

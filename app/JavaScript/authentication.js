@@ -7,6 +7,11 @@ function login() {
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(
     function() {
+			var user = firebase.auth().currentUser;
+			if (localStorage.getItem("name") != user.displayName)
+			{
+				localStorage.setItem("name", user.displayName);
+			}
 			window.location = "/dashboard";
     },
     function(error) {
