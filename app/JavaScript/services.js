@@ -10,14 +10,14 @@ var nba_payment = ["NBA One Team - $17.99", "NBA All Teams Monthly - $28.99", "N
 var mlb_payment = ["MLB.TV Premium Monthly - $24.99", "MLB.TV Premium Yearly - $129.99", "MLB.TV Basic Monthly - $19.99", "MLB.TV Basic Yearly - $109.99"];
 
 var custom_bar = ["custom"];
-var spotify_bar = ["spotify", "music", "playlist", "songs"];
-var amazon_bar = ["amazon", "prime"];
-var netflix_bar = ["netflix", "chill", "tv", "television"];
-var hulu_bar = ["hulu", "television", "tv"];
-var hbo_bar = ["hbo", "home box office", "television", "tv"];
-var nfl_bar = ["nfl", "national football league", "sports", "game"];
-var nba_bar = ["nba", "national basketball league", "sports", "game"];
-var mlb_bar = ["mlb", "major league baseball", "sports", "game"];
+var spotify_bar = ["spotify"];
+var amazon_bar = ["amazon"];
+var netflix_bar = ["netflix"];
+var hulu_bar = ["hulu"];
+var hbo_bar = ["hbo"];
+var nfl_bar = ["nfl"];
+var nba_bar = ["nba"];
+var mlb_bar = ["mlb"];
 
 var search_bar = [custom_bar, spotify_bar, amazon_bar, netflix_bar, hulu_bar, hbo_bar, nfl_bar, nba_bar, mlb_bar];
 
