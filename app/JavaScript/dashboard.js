@@ -58,19 +58,13 @@ function updateDashCards(eventList) {
     {
       var trash = document.createElement("IMG");
       var star = document.createElement("IMG");
-      star.style.float = "left";
       star.src = "/Images/star.png";
-      star.style.width = "40px";
-      star.style.height = "40px";
-      star.style.marginTop = "10px";
-      star.style.marginLeft = "10px";
       trash.id = "trash_icon";
       trash.onclick = () => {deleteEvent(scopedEvent)};
       trash.src = "/Images/delete.png";
     //  newCard.appendChild(star);
       newCard.appendChild(star);
-      star.style.marginTop = "155px";
-      star.className += " hover_div";
+      star.className += " dashboard_star_icon hover_div";
       newCard.appendChild(trash);
       trash.className += " dashboard_trash_icon hover_div";
     }
@@ -126,6 +120,8 @@ function setup_dashboard()
   var signout_heading = document.getElementById("signout_heading");
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      var dashboard_search_bar = document.getElementById("dashboard_search_bar");
+      dashboard_search_bar.style.display = "block";
       signout_heading.innerHTML = user.displayName;
       var arrow = document.createElement("IMG");
       arrow.src = "/Images/drop_arrow.png";
