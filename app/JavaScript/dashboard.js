@@ -42,7 +42,6 @@ function updateDashCards(eventList) {
     var newParagraph = document.createElement("P");
     newParagraph.style.color = "white";
     newParagraph.style.fontSize = "24px";
-
     newParagraph.innerHTML = eventObj.eventName;
 
     var newPrice = document.createElement("P");
@@ -58,24 +57,22 @@ function updateDashCards(eventList) {
     if(eventObj.ownerEmail == firebase.auth().currentUser.email)
     {
       var trash = document.createElement("IMG");
-      var newOwner = document.createElement("P");
+      var star = document.createElement("IMG");
+      star.style.float = "left";
+      star.src = "/Images/star.png";
+      star.style.width = "40px";
+      star.style.height = "40px";
+      star.style.marginTop = "10px";
+      star.style.marginLeft = "10px";
       trash.id = "trash_icon";
-      newOwner.style.color = "white";
-      newOwner.style.float = "left";
-      newOwner.style.marginLeft = "130px";
-      newOwner.style.marginTop = "-15px";
-      newOwner.style.fontSize = "24px";
-      newOwner.innerHTML = "(Owner)";
       trash.onclick = () => {deleteEvent(scopedEvent)};
       trash.src = "/Images/delete.png";
-      newCard.appendChild(newOwner);
+    //  newCard.appendChild(star);
+      newCard.appendChild(star);
+      star.style.marginTop = "155px";
+      star.className += " hover_div";
       newCard.appendChild(trash);
-      trash.style.width = "40px";
-      trash.style.height = "40px";
-      trash.style.float = "right";
-      trash.style.marginTop = "155px";
-      trash.style.marginRight = "10px";
-      trash.className += " hover_div";
+      trash.className += " dashboard_trash_icon hover_div";
     }
     newCard.onclick = function(event)
     {

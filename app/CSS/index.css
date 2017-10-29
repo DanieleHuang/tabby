@@ -313,6 +313,14 @@ textarea:focus, input:focus{
   max-width: 1135px;
 }
 
+.dashboard_trash_icon
+{
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin: 155px 10px 0px 0px;
+}
+
 --------------
 
 
